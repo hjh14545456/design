@@ -1,0 +1,924 @@
+@charset "UTF-8";
+/* 登录弹窗 */
+.form-box .input-group { position: relative; margin-bottom: 10px; *zoom: 1; }
+.form-box .input-group input { width: 328px; height: 38px; margin-bottom: 10px; padding: 0 10px 0 10px; line-height: 38px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; }
+.form-box .input-group .receive-code { width: 185px; }
+.form-box .input-group .btn-receive-code { width: 126px; height: 38px; margin-left: 10px; color: #969696; border: 1px solid #d3d3d3; display: inline-block; vertical-align: top; text-align: center; line-height: 38px; background: #fff; }
+.form-box .input-group .btn-receive-code b { color: #ed5565; }
+.form-box .btn-group { margin-top: 40px; }
+.form-box .btn-group button { height: 38px; line-height: 38px; color: #333; text-align: center; width: 350px; cursor: pointer; font-size: 14px; border-radius: 4px; }
+.form-box .code-group { position: relative; }
+.form-box .code-group img { width: 65px; height: 28px; display: block; position: absolute; right: 10px; top: 7px; }
+.form-box .form-ft { color: #969696; }
+.form-box .form-ft span { float: left; padding: 18px 0; line-height: 20px; }
+.form-box .form-ft span a { color: #f78700; }
+.form-box .form-ft span.tr { float: right; }
+.form-box .wrongBox { position: absolute; top: 10px; left: 356px; white-space: nowrap; color: #a0a0a0; line-height: 20px; }
+.form-box .wrongBox b { font-weight: 700; vertical-align: middle; color: #ff3b30; }
+.form-box input[type='text']:focus, .form-box input[type='password']:focus { border-color: #fbc02d; }
+
+.login-box { width: 350px; margin: 0 auto; font-size: 14px; background: #fff; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+.login-box h3 { margin-bottom: 40px; font-size: 22px; font-weight: bold; color: #000; text-align: center; line-height: 1; }
+.login-box .login-title { margin-bottom: 20px; font-size: 20px; color: #969696; text-align: center; }
+.login-box .login-title li { float: left; width: 50%; padding-bottom: 20px; font-size: 18px; color: #666; line-height: 22px; cursor: pointer; border-bottom: 2px solid transparent; }
+.login-box .login-title li.active { font-size: 22px; font-weight: bold; color: #333; border-color: #fbc02d; background: url(../image/icon-cat-claw.png) no-repeat center bottom; }
+.login-box .wrongBox { position: static; display: block; height: 20px; }
+
+.login-ft { margin-top: 10px; text-align: center; color: #969696; }
+.login-ft .otherUser_T { position: relative; line-height: 1; margin-bottom: 20px; }
+.login-ft .otherUser_B a { display: inline-block; width: 62px; height: 62px; background: url(../../images/login/icon-login-other.png) no-repeat; margin: 0 5px; }
+.login-ft .otherUser_B a.qqLogin { background-position: 0 0; }
+.login-ft .otherUser_B a.wbLogin { background-position: 0 -62px; }
+
+label.error { display: block; white-space: nowrap; line-height: 20px; background: url("../images/icon-form-error.gif") no-repeat left center; padding-left: 25px; color: #ff3b30; font-size: 14px; }
+.form-control { display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.428571429; color: #555555; vertical-align: middle; background-color: #ffffff; border: 1px solid #cccccc; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.form-control:focus { border-color: #a6e8f9; outline: 0; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.065), 0 0 8px rgba(74, 219, 255, 0.5); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.065), 0 0 8px rgba(74, 219, 255, 0.5); }
+
+/* 提示 */
+.dialog-alert .ui-dialog-close { top: 3px; right: 5px; }
+.dialog-alert .ui-dialog-title { padding: 0; min-height: 0; }
+.dialog-alert .ui-dialog-content { padding: 0 10px; }
+/* 登录弹窗 end */
+
+.book-chapter-comment .comment-operate, .reply-list div { *zoom: 1; }
+.book-chapter-comment .comment-operate:before, .reply-list div:before, .book-chapter-comment .comment-operate:after, .reply-list div:after { content: ""; display: table; }
+.book-chapter-comment .comment-operate:after, .reply-list div:after { clear: both; }
+
+.state a:before, .state span:before { background: url(../../images/comment/sprite.png) no-repeat 0 0; }
+
+/* 讨论区 */
+.ly-fl { float: left; }
+
+.ly-fr { float: right; }
+
+.hide { display: none; }
+
+a:hover { color: #fbc02d; }
+
+.ly-mt10 { margin-top: 10px; }
+
+.ly-mt30 { margin-top: 30px; }
+
+.ly-mt60 { margin-top: 60px; }
+
+.ly-ml10 { margin-left: 10px; }
+
+.btn { display: inline-block; width: 88px; height: 28px; font-size: 14px; color: #333; line-height: 28px; text-align: center; white-space: nowrap; background-color: #e6e6e6; border: 1px solid #e6e6e6; border-radius: 4px; vertical-align: middle; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+.btn-md { width: 98px; height: 30px; line-height: 30px; }
+
+.btn-warning, .btn-warning:hover { color: #212121; background-color: #fbc02d; border: 1px solid #fbc02d; }
+
+.icon-sex { display: inline-block; width: 18px; height: 18px; background: url(../../images/comment/icon-sex.png) 0 0 no-repeat; position: absolute; bottom: 4px; right: 1px; }
+
+.icon-female { background-position: 0 -18px; }
+
+.icon-level-v, .icon-level-p, .icon-level-h, .icon-level-d { display: inline-block; width: 34px; height: 18px; margin: 0 5px; vertical-align: sub; background: url(../../images/comment/icon-level.png) no-repeat 0 0; }
+
+.icon-level-v { background-position: 0 0; }
+
+.icon-level-p { background-position: 0 -18px; }
+
+.icon-level-h { background-position: 0 -36px; }
+
+.icon-level-d { background-position: 0 -54px; }
+
+.comment-box { width: 920px; margin: 40px auto 0; padding: 40px; font-family: 'MicrosoftYahei'; color: #000; background: #fff; border-radius: 4px; }
+
+.mod-box .mod-tit h3 { font-size: 20px; color: #212121; }
+
+.mod-box .mod-tit .comment { font-size: 22px; font-weight: bold; }
+
+.book-chapter-comment { margin-top: 20px; }
+.book-chapter-comment .comment-input { width: 100%; height: 180px; padding: 10px 15px; font-size: 14px; word-break: break-all; background-color: #fff; border: 1px solid #dadada; border-radius: 4px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.book-chapter-comment .comment-input:focus { outline: none; border-color: #fbc02d; -webkit-box-shadow: 0 0 3px #fbc02d; -moz-box-shadow: 0 0 3px #fbc02d; -o-box-shadow: 0 0 3px #fbc02d; box-shadow: 0 0 3px #fbc02d; -webkit-transition: border linear .2s, -webkit-box-shadow linear .2s; -moz-transition: border linear .2s, -moz-box-shadow linear .2s; -o-transition: border linear .2s, -o-box-shadow linear .2s; transition: border linear .2s, box-shadow linear .2s; }
+.book-chapter-comment .comment-operate { margin-top: 10px; color: #969696; }
+
+.comment-face { position: relative; z-index: 100; color: #969696; }
+.comment-face .face-btn { font-size: 14px; color: #969696; cursor: pointer; }
+.comment-face .face-btn:before { content: ''; display: inline-block; width: 20px; height: 16px; margin-right: 8px; background: url(../../images/comment/icon-face.png) no-repeat; vertical-align: middle; }
+
+.face-dialog { position: absolute; top: 16px; left: 6px; z-index: 100; width: 392px; height: 180px; padding: 15px 25px 15px 15px; font-size: 12px; background: url(../../images/comment/face-bg.png) no-repeat; }
+.face-dialog .hd { height: 35px; line-height: 35px; overflow: hidden; border: 1px solid #c8c8c8; padding: 0 18px; position: relative; width: 353px; }
+.face-dialog .hd ul { width: 100em; overflow: hidden; zoom: 1; }
+.face-dialog .hd .prev, .face-dialog .hd .next { display: block; width: 18px; padding: 0; position: absolute; height: 35px; left: 0; top: 0; background: #fff; }
+.face-dialog .hd .prev b, .face-dialog .hd .next b { position: absolute; top: 13px; left: 2px; font-size: 0; line-height: 0; border: 4px solid #fafafa; border-right-color: #969696; }
+.face-dialog .hd .prev:hover b, .face-dialog .hd .next:hover b { border-right-color: #fbc02d; }
+.face-dialog .hd .next { right: 0; left: auto; }
+.face-dialog .hd .next b { left: 8px; border-right-color: #fafafa; border-left-color: #969696; }
+.face-dialog .hd .next:hover b { border-right-color: #fafafa; border-left-color: #fbc02d; }
+.face-dialog .hd li { float: left; padding: 0; border: none; }
+.face-dialog .hd li a { display: block; padding: 0 12px; }
+.face-dialog .hd li a.selected { color: #fff; background: #bebebe; }
+.face-dialog .bd { margin: 0 !important; }
+.face-dialog .bd .cnt { width: 408px; height: 141px; overflow: hidden; border-left: 1px solid #c8c8c8; *zoom: 1; }
+.face-dialog .bd a { float: left; /*width: 77px;*/ height: 46px; line-height: 46px; text-align: center; border-width: 0 1px 1px 0; border-style: solid; border-color: #c8c8c8; background: #f7f7f7; overflow: hidden; }
+.face-dialog .bd a:hover { background: #fff; }
+.face-dialog .bd a.l1 { width: 77px; }
+.face-dialog .bd a.l2 { width: 155px; }
+.face-dialog .bd a.l3 { width: 233px; }
+.face-dialog .bd a.l4 { width: 311px; }
+.face-dialog .bd a.l5 { width: 389px; }
+
+.comment-list li { position: relative; padding: 10px 0; border-bottom: 1px solid #eaeaea; background: #fff; }
+.comment-list .img { position: relative; width: 60px; height: 60px; margin-left: -10px; padding: 10px; }
+.comment-list .img img { width: 60px; height: 60px; border-radius: 50%; }
+.comment-list .img .icon-sex { bottom: 10px; right: 10px; }
+.comment-list .bd { margin: 10px 0 0 80px; }
+.comment-list .bd .name { font-size: 14px; height: 24px; line-height: 24px; }
+.comment-list .bd .name a { color: #3797cc; }
+.comment-list .bd .level { margin-bottom: 6px; height: 20px; font-size: 12px; line-height: 20px; color: #969696; }
+.comment-list .bd .time { float: right; color: #aaa; }
+.comment-list .bd .desc-content { position: relative; font: 100 14px/26px 'microsoft yahei'; color: #000; word-break: break-all; overflow: hidden; }
+.comment-list .bd .show-all-btn { display: none; color: #fbc02d; }
+.comment-list .book-chapter-comment { margin-top: 10px; }
+.comment-list .book-chapter-comment .comment-input { height: 120px; }
+.comment-list [class^="icon-level-"] { margin: 0; }
+
+.comment-list-in { margin-top: 10px; }
+.comment-list-in li { padding: 10px 0; border-top: 1px solid #eaeaea; border-bottom: 0 none; }
+.comment-list-in .img { width: 30px; height: 30px; margin-left: -5px; padding: 5px; }
+.comment-list-in .img img { width: 30px; height: 30px; }
+.comment-list-in .bd { margin: 4px 0 0 50px; }
+.comment-list-in .bd .desc-content { margin-top: 10px; color: #969696; }
+.comment-list-in .state { margin-top: 0; }
+
+.reply-list { background: #fff7e8; border-radius: 5px; }
+.reply-list p, .reply-list div { padding: 6px 13px; font: 100 14px/24px 'microsoft yahei'; text-align: left; }
+.reply-list p { position: relative; padding-right: 70px; border-bottom: 1px solid #eaeaea; color: #212121; }
+.reply-list p a { color: #3797cc; }
+.reply-list div { font-size: 12px; color: #969696; }
+.reply-list div a { color: #ed5565; }
+
+.state { margin-top: 10px; font: 100 12px/24px 'microsoft yahei'; color: #969696; text-align: right; }
+.state a, .state span { display: inline-block; margin-left: 20px; color: #969696; }
+.state a:hover, .state span:hover { color: #fbc02d; }
+.state a:before, .state span:before { content: ''; display: inline-block; width: 18px; height: 18px; margin-right: 1px; vertical-align: sub; }
+.state .zan:before { background-position: -36px 0; }
+.state .zan:hover, .state .zan.done { color: #fbc02d; }
+.state .zan:hover:before, .state .zan.done:before { background-position: -54px 0; }
+.state .reply:before { margin-right: 3px; background-position: 0 0; }
+.state .reply:hover { color: #fbc02d; }
+.state .reply:hover:before { background-position: -18px 0; }
+
+.review-all-comment { border-top: 1px dotted #eaeaea; padding: 20px 0 10px 40px; }
+.review-all-comment .btn-review-all { display: block; height: 40px; line-height: 40px; font-size: 14px; color: #739faf; text-align: center; background-color: #eff4f6; }
+
+.pagination { padding: 20px 0; text-align: center; background: #fff; }
+.pagination li { display: inline-block; margin: 0 2px; vertical-align: middle; }
+.pagination li a { display: block; width: 30px; height: 30px; font-size: 12px; color: #ccc; text-align: center; line-height: 30px; border: 1px solid #ccc; border-radius: 4px; }
+.pagination li.selected a, .pagination li:hover a { color: #000; background: #fbc02d; border-color: #fbc02d; }
+.pagination li.prev a:before, .pagination li.next a:before { content: ""; display: inline-block; width: 6px; height: 10px; background: url(../../images/comment/sprite.png) no-repeat -72px 0; }
+.pagination li.prev a:hover:before, .pagination li.next a:hover:before { background-position: -78px 0; }
+.pagination li.next a:before { background-position: -84px 0; }
+.pagination li.next a:hover:before { background-position: -90px 0; }
+.pagination .pageSkip { width: auto; margin-left: 10px; }
+.pagination .pageSkip span { font-size: 12px; color: #999; line-height: 32px; }
+.pagination .pageSkip .skipBox { width: 30px; height: 30px; padding: 0; margin: 0 10px; font-size: 12px; line-height: 30px; text-align: center; border: 1px solid #ccc; border-radius: 4px; }
+.pagination .pageSkip .pageSkipQd { width: 48px; color: #000; margin-left: 10px; border-color: #fbc02d; background: #fbc02d; }
+
+.pagination-review { text-align: center; }
+.pagination-review li { display: inline-block; margin: 0 4px; padding: 0; background: transparent; border: 0 none; }
+.pagination-review li a { padding: 5px 7px; font-size: 12px; color: #f78700; background: #fff7e8; border-radius: 4px; }
+.pagination-review li:hover a, .pagination-review li.selected a { font-weight: bold; color: #333; background: transparent; }
+
+.pagination-reply { display: none; float: right; }
+.pagination-reply li { display: inline-block; padding: 0; background: transparent; border: 0 none; }
+.pagination-reply li a { padding: 0 3px; font-size: 14px; color: #666; }
+.pagination-reply li:hover a, .pagination-reply li.selected a { color: #f78700; }
+
+.rank-rule { height: 40px; }
+
+.rank-rule a { margin-right: 45px; padding-bottom: 16px; font-size: 18px; color: #000; }
+
+.rank-rule a.current { color: #009fd5; background: url(../../images/comment/bg-rank.png) no-repeat center bottom; }
+
+.comment-list .floor { margin-top: 10px; font-size: 18px; color: #969696; text-align: center; }
+
+.dialog-identify .msg { font-size: 18px; text-align: center; line-height: 1.5; margin: 0 0 10px; }
+
+.dialog-identify .tips { font-size: 13px; color: #999; text-align: center; }
+
+/*������ end*/
+/*头像挂件*/
+.medal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.medal_1_40 {
+    background: url(../../images/medal/medal1_40x40.png) no-repeat center;
+}
+.medal_1_67 {
+    background: url(../../images/medal/medal1_67x67.png) no-repeat center;
+}
+.medal_1_80 {
+    background: url(../../images/medal/medal1_80x80.png) no-repeat center;
+}
+.medal_1_99 {
+    background: url(../../images/medal/medal1_99x99.png) no-repeat center;
+}
+.medal_2_40 {
+    background: url(../../images/medal/medal2_40x40.png) no-repeat center;
+}
+.medal_2_67 {
+    background: url(../../images/medal/medal2_67x67.png) no-repeat center;
+}
+.medal_2_80 {
+    background: url(../../images/medal/medal2_80x80.png) no-repeat center;
+}
+.medal_2_99 {
+    background: url(../../images/medal/medal2_99x99.png) no-repeat center;
+}
+.medal_3_40 {
+    background: url(../../images/medal/medal3_40x40.png) no-repeat center;
+}
+.medal_3_67 {
+    background: url(../../images/medal/medal3_67x67.png) no-repeat center;
+}
+.medal_3_80 {
+    background: url(../../images/medal/medal3_80x80.png) no-repeat center;
+}
+.medal_3_99 {
+    background: url(../../images/medal/medal3_99x99.png) no-repeat center;
+}
+.medal_4_40 {
+    background: url(../../images/medal/medal4_40x40.png) no-repeat center;
+}
+.medal_4_67 {
+    background: url(../../images/medal/medal4_67x67.png) no-repeat center;
+}
+.medal_4_80 {
+    background: url(../../images/medal/medal4_80x80.png) no-repeat center;
+}
+.medal_4_99 {
+    background: url(../../images/medal/medal4_99x99.png) no-repeat center;
+}
+.medal_5_40 {
+    background: url(../../images/medal/medal5_40x40.png) no-repeat center;
+}
+.medal_5_67 {
+    background: url(../../images/medal/medal5_67x67.png) no-repeat center;
+}
+.medal_5_80 {
+    background: url(../../images/medal/medal5_80x80.png) no-repeat center;
+}
+.medal_5_99 {
+    background: url(../../images/medal/medal5_99x99.png) no-repeat center;
+}
+.medal_6_40 {
+    background: url(../../images/medal/medal6_40x40.png) no-repeat center;
+}
+.medal_6_67 {
+    background: url(../../images/medal/medal6_67x67.png) no-repeat center;
+}
+.medal_6_80 {
+    background: url(../../images/medal/medal6_80x80.png) no-repeat center;
+}
+.medal_6_99 {
+    background: url(../../images/medal/medal6_99x99.png) no-repeat center;
+}
+.medal_7_40 {
+    background: url(../../images/medal/medal7_40x40.png) no-repeat center;
+}
+.medal_7_67 {
+    background: url(../../images/medal/medal7_67x67.png) no-repeat center;
+}
+.medal_7_80 {
+    background: url(../../images/medal/medal7_80x80.png) no-repeat center;
+}
+.medal_7_99 {
+    background: url(../../images/medal/medal7_99x99.png) no-repeat center;
+}
+.medal_8_40 {
+    background: url(../../images/medal/medal8_40x40.png) no-repeat center;
+}
+.medal_8_67 {
+    background: url(../../images/medal/medal8_67x67.png) no-repeat center;
+}
+.medal_8_80 {
+    background: url(../../images/medal/medal8_80x80.png) no-repeat center;
+}
+.medal_8_99 {
+    background: url(../../images/medal/medal8_99x99.png) no-repeat center;
+}
+.medal_9_40 {
+    background: url(../../images/medal/medal9_40x40.png) no-repeat center;
+}
+.medal_9_67 {
+    background: url(../../images/medal/medal9_67x67.png) no-repeat center;
+}
+.medal_9_80 {
+    background: url(../../images/medal/medal9_80x80.png) no-repeat center;
+}
+.medal_9_99 {
+    background: url(../../images/medal/medal9_99x99.png) no-repeat center;
+}
+.medal_10_40 {
+    background: url(../../images/medal/medal10_40x40.png) no-repeat center;
+}
+.medal_10_67 {
+    background: url(../../images/medal/medal10_67x67.png) no-repeat center;
+}
+.medal_10_80 {
+    background: url(../../images/medal/medal10_80x80.png) no-repeat center;
+}
+.medal_10_99 {
+    background: url(../../images/medal/medal10_99x99.png) no-repeat center;
+}
+.medal_11_40 {
+    background: url(../../images/medal/medal11_40x40.png) no-repeat center;
+}
+.medal_11_67 {
+    background: url(../../images/medal/medal11_67x67.png) no-repeat center;
+}
+.medal_11_80 {
+    background: url(../../images/medal/medal11_80x80.png) no-repeat center;
+}
+.medal_11_99 {
+    background: url(../../images/medal/medal11_99x99.png) no-repeat center;
+}
+.medal_12_40 {
+    background: url(../../images/medal/medal12_40x40.png) no-repeat center;
+}
+.medal_12_67 {
+    background: url(../../images/medal/medal12_67x67.png) no-repeat center;
+}
+.medal_12_80 {
+    background: url(../../images/medal/medal12_80x80.png) no-repeat center;
+}
+.medal_12_99 {
+    background: url(../../images/medal/medal12_99x99.png) no-repeat center;
+}
+.medal_13_40 {
+    background: url(../../images/medal/medal13_40x40.png) no-repeat center;
+}
+.medal_13_67 {
+    background: url(../../images/medal/medal13_67x67.png) no-repeat center;
+}
+.medal_13_80 {
+    background: url(../../images/medal/medal13_80x80.png) no-repeat center;
+}
+.medal_13_99 {
+    background: url(../../images/medal/medal13_99x99.png) no-repeat center;
+}
+.medal_14_40 {
+    background: url(../../images/medal/medal14_40x40.png) no-repeat center;
+}
+.medal_14_67 {
+    background: url(../../images/medal/medal14_67x67.png) no-repeat center;
+}
+.medal_14_80 {
+    background: url(../../images/medal/medal14_80x80.png) no-repeat center;
+}
+.medal_14_99 {
+    background: url(../../images/medal/medal14_99x99.png) no-repeat center;
+}
+.medal_15_40 {
+    background: url(../../images/medal/medal15_40x40.png) no-repeat center;
+}
+.medal_15_67 {
+    background: url(../../images/medal/medal15_67x67.png) no-repeat center;
+}
+.medal_15_80 {
+    background: url(../../images/medal/medal15_80x80.png) no-repeat center;
+}
+.medal_15_99 {
+    background: url(../../images/medal/medal15_99x99.png) no-repeat center;
+}
+.medal_16_40 {
+    background: url(../../images/medal/medal16_40x40.png) no-repeat center;
+}
+.medal_16_67 {
+    background: url(../../images/medal/medal16_67x67.png) no-repeat center;
+}
+.medal_16_80 {
+    background: url(../../images/medal/medal16_80x80.png) no-repeat center;
+}
+.medal_16_99 {
+    background: url(../../images/medal/medal16_99x99.png) no-repeat center;
+}
+.medal_17_40 {
+    background: url(../../images/medal/medal17_40x40.png) no-repeat center;
+}
+.medal_17_67 {
+    background: url(../../images/medal/medal17_67x67.png) no-repeat center;
+}
+.medal_17_80 {
+    background: url(../../images/medal/medal17_80x80.png) no-repeat center;
+}
+.medal_17_99 {
+    background: url(../../images/medal/medal17_99x99.png) no-repeat center;
+}
+.medal_19_40 {
+    background: url(../../images/medal/medal19_40x40.png) no-repeat center;
+}
+.medal_19_67 {
+    background: url(../../images/medal/medal19_67x67.png) no-repeat center;
+}
+.medal_19_80 {
+    background: url(../../images/medal/medal19_80x80.png) no-repeat center;
+}
+.medal_19_99 {
+    background: url(../../images/medal/medal19_99x99.png) no-repeat center;
+}
+.medal_20_40 {
+    background: url(../../images/medal/medal20_40x40.png) no-repeat center;
+}
+.medal_20_67 {
+    background: url(../../images/medal/medal20_67x67.png) no-repeat center;
+}
+.medal_20_80 {
+    background: url(../../images/medal/medal20_80x80.png) no-repeat center;
+}
+.medal_20_99 {
+    background: url(../../images/medal/medal20_99x99.png) no-repeat center;
+}
+.medal_21_40 {
+    background: url(../../images/medal/medal21_40x40.png) no-repeat center;
+}
+.medal_21_67 {
+    background: url(../../images/medal/medal21_67x67.png) no-repeat center;
+}
+.medal_21_80 {
+    background: url(../../images/medal/medal21_80x80.png) no-repeat center;
+}
+.medal_21_99 {
+    background: url(../../images/medal/medal21_99x99.png) no-repeat center;
+}
+.medal_22_40 {
+    background: url(../../images/medal/medal22_40x40.png) no-repeat center;
+}
+.medal_22_67 {
+    background: url(../../images/medal/medal22_67x67.png) no-repeat center;
+}
+.medal_22_80 {
+    background: url(../../images/medal/medal22_80x80.png) no-repeat center;
+}
+.medal_22_99 {
+    background: url(../../images/medal/medal22_99x99.png) no-repeat center;
+}
+.medal_23_40 {
+    background: url(../../images/medal/medal23_40x40.png) no-repeat center;
+}
+.medal_23_67 {
+    background: url(../../images/medal/medal23_67x67.png) no-repeat center;
+}
+.medal_23_80 {
+    background: url(../../images/medal/medal23_80x80.png) no-repeat center;
+}
+.medal_23_99 {
+    background: url(../../images/medal/medal23_99x99.png) no-repeat center;
+}
+.medal_24_40 {
+    background: url(../../images/medal/medal24_40x40.png) no-repeat center;
+}
+.medal_24_67 {
+    background: url(../../images/medal/medal24_67x67.png) no-repeat center;
+}
+.medal_24_80 {
+    background: url(../../images/medal/medal24_80x80.png) no-repeat center;
+}
+.medal_24_99 {
+    background: url(../../images/medal/medal24_99x99.png) no-repeat center;
+}
+.medal_25_40 {
+    background: url(../../images/medal/medal25_40x40.png) no-repeat center;
+}
+.medal_25_67 {
+    background: url(../../images/medal/medal25_67x67.png) no-repeat center;
+}
+.medal_25_80 {
+    background: url(../../images/medal/medal25_80x80.png) no-repeat center;
+}
+.medal_25_99 {
+    background: url(../../images/medal/medal25_99x99.png) no-repeat center;
+}
+.medal_26_40 {
+    background: url(../../images/medal/medal26_40x40.png) no-repeat center;
+}
+.medal_26_67 {
+    background: url(../../images/medal/medal26_67x67.png) no-repeat center;
+}
+.medal_26_80 {
+    background: url(../../images/medal/medal26_80x80.png) no-repeat center;
+}
+.medal_26_99 {
+    background: url(../../images/medal/medal26_99x99.png) no-repeat center;
+}
+.medal_27_40 {
+    background: url(../../images/medal/medal27_40x40.png) no-repeat center;
+}
+.medal_27_67 {
+    background: url(../../images/medal/medal27_67x67.png) no-repeat center;
+}
+.medal_27_80 {
+    background: url(../../images/medal/medal27_80x80.png) no-repeat center;
+}
+.medal_27_99 {
+    background: url(../../images/medal/medal27_99x99.png) no-repeat center;
+}
+.medal_28_40 {
+    background: url(../../images/medal/medal28_40x40.png) no-repeat center;
+}
+.medal_28_67 {
+    background: url(../../images/medal/medal28_67x67.png) no-repeat center;
+}
+.medal_28_80 {
+    background: url(../../images/medal/medal28_80x80.png) no-repeat center;
+}
+.medal_28_99 {
+    background: url(../../images/medal/medal28_99x99.png) no-repeat center;
+}
+.medal_29_40 {
+    background: url(../../images/medal/medal29_40x40.png) no-repeat center;
+}
+.medal_29_67 {
+    background: url(../../images/medal/medal29_67x67.png) no-repeat center;
+}
+.medal_29_80 {
+    background: url(../../images/medal/medal29_80x80.png) no-repeat center;
+}
+.medal_29_99 {
+    background: url(../../images/medal/medal29_99x99.png) no-repeat center;
+}
+.medal_30_40 {
+    background: url(../../images/medal/medal30_40x40.png) no-repeat center;
+}
+.medal_30_67 {
+    background: url(../../images/medal/medal30_67x67.png) no-repeat center;
+}
+.medal_30_80 {
+    background: url(../../images/medal/medal30_80x80.png) no-repeat center;
+}
+.medal_30_99 {
+    background: url(../../images/medal/medal30_99x99.png) no-repeat center;
+}
+.medal_31_40 {
+    background: url(../../images/medal/medal31_40x40.png) no-repeat center;
+}
+.medal_31_67 {
+    background: url(../../images/medal/medal31_67x67.png) no-repeat center;
+}
+.medal_31_80 {
+    background: url(../../images/medal/medal31_80x80.png) no-repeat center;
+}
+.medal_31_99 {
+    background: url(../../images/medal/medal31_99x99.png) no-repeat center;
+}
+.medal_32_40 {
+    background: url(../../images/medal/medal32_40x40.png) no-repeat center;
+}
+.medal_32_67 {
+    background: url(../../images/medal/medal32_67x67.png) no-repeat center;
+}
+.medal_32_80 {
+    background: url(../../images/medal/medal32_80x80.png) no-repeat center;
+}
+.medal_32_99 {
+    background: url(../../images/medal/medal32_99x99.png) no-repeat center;
+}
+.medal_33_40 {
+    background: url(../../images/medal/medal33_40x40.png) no-repeat center;
+}
+.medal_33_67 {
+    background: url(../../images/medal/medal33_67x67.png) no-repeat center;
+}
+.medal_33_80 {
+    background: url(../../images/medal/medal33_80x80.png) no-repeat center;
+}
+.medal_33_99 {
+    background: url(../../images/medal/medal33_99x99.png) no-repeat center;
+}
+.medal_34_40 {
+    background: url(../../images/medal/medal34_40x40.png) no-repeat center;
+}
+.medal_34_67 {
+    background: url(../../images/medal/medal34_67x67.png) no-repeat center;
+}
+.medal_34_80 {
+    background: url(../../images/medal/medal34_80x80.png) no-repeat center;
+}
+.medal_34_99 {
+    background: url(../../images/medal/medal34_99x99.png) no-repeat center;
+}
+.medal_35_40 {
+    background: url(../../images/medal/medal35_40x40.png) no-repeat center;
+}
+.medal_35_67 {
+    background: url(../../images/medal/medal35_67x67.png) no-repeat center;
+}
+.medal_35_80 {
+    background: url(../../images/medal/medal35_80x80.png) no-repeat center;
+}
+.medal_35_99 {
+    background: url(../../images/medal/medal35_99x99.png) no-repeat center;
+}
+.medal_36_40 {
+    background: url(../../images/medal/medal36_40x40.png) no-repeat center;
+}
+.medal_36_67 {
+    background: url(../../images/medal/medal36_67x67.png) no-repeat center;
+}
+.medal_36_80 {
+    background: url(../../images/medal/medal36_80x80.png) no-repeat center;
+}
+.medal_36_99 {
+    background: url(../../images/medal/medal36_99x99.png) no-repeat center;
+}
+.medal_37_40 {
+    background: url(../../images/medal/medal37_40x40.png) no-repeat center;
+}
+.medal_37_67 {
+    background: url(../../images/medal/medal37_67x67.png) no-repeat center;
+}
+.medal_37_80 {
+    background: url(../../images/medal/medal37_80x80.png) no-repeat center;
+}
+.medal_37_99 {
+    background: url(../../images/medal/medal37_99x99.png) no-repeat center;
+}
+.medal_38_40 {
+    background: url(../../images/medal/medal38_40x40.png) no-repeat center;
+}
+.medal_38_67 {
+    background: url(../../images/medal/medal38_67x67.png) no-repeat center;
+}
+.medal_38_80 {
+    background: url(../../images/medal/medal38_80x80.png) no-repeat center;
+}
+.medal_38_99 {
+    background: url(../../images/medal/medal38_99x99.png) no-repeat center;
+}
+.medal_39_40 {
+    background: url(../../images/medal/medal39_40x40.png) no-repeat center;
+}
+.medal_39_67 {
+    background: url(../../images/medal/medal39_67x67.png) no-repeat center;
+}
+.medal_39_80 {
+    background: url(../../images/medal/medal39_80x80.png) no-repeat center;
+}
+.medal_39_99 {
+    background: url(../../images/medal/medal39_99x99.png) no-repeat center;
+}
+.medal_40_40 {
+    background: url(../../images/medal/medal40_40x40.png) no-repeat center;
+}
+.medal_40_67 {
+    background: url(../../images/medal/medal40_67x67.png) no-repeat center;
+}
+.medal_40_80 {
+    background: url(../../images/medal/medal40_80x80.png) no-repeat center;
+}
+.medal_40_99 {
+    background: url(../../images/medal/medal40_99x99.png) no-repeat center;
+}
+.medal_41_40 {
+    background: url(../../images/medal/medal41_40x40.png) no-repeat center;
+}
+.medal_41_67 {
+    background: url(../../images/medal/medal41_67x67.png) no-repeat center;
+}
+.medal_41_80 {
+    background: url(../../images/medal/medal41_80x80.png) no-repeat center;
+}
+.medal_41_99 {
+    background: url(../../images/medal/medal41_99x99.png) no-repeat center;
+}
+.medal_42_40 {
+    background: url(../../images/medal/medal42_40x40.png) no-repeat center;
+}
+.medal_42_67 {
+    background: url(../../images/medal/medal42_67x67.png) no-repeat center;
+}
+.medal_42_80 {
+    background: url(../../images/medal/medal42_80x80.png) no-repeat center;
+}
+.medal_42_99 {
+    background: url(../../images/medal/medal42_99x99.png) no-repeat center;
+}
+.medal_43_40 {
+    background: url(../../images/medal/medal43_40x40.png) no-repeat center;
+}
+.medal_43_67 {
+    background: url(../../images/medal/medal43_67x67.png) no-repeat center;
+}
+.medal_43_80 {
+    background: url(../../images/medal/medal43_80x80.png) no-repeat center;
+}
+.medal_43_99 {
+    background: url(../../images/medal/medal43_99x99.png) no-repeat center;
+}
+.medal_44_40 {
+    background: url(../../images/medal/medal44_40x40.png) no-repeat center;
+}
+.medal_44_67 {
+    background: url(../../images/medal/medal44_67x67.png) no-repeat center;
+}
+.medal_44_80 {
+    background: url(../../images/medal/medal44_80x80.png) no-repeat center;
+}
+.medal_44_99 {
+    background: url(../../images/medal/medal44_99x99.png) no-repeat center;
+}
+.medal_45_40 {
+    background: url(../../images/medal/medal45_40x40.png) no-repeat center;
+}
+.medal_45_67 {
+    background: url(../../images/medal/medal45_67x67.png) no-repeat center;
+}
+.medal_45_80 {
+    background: url(../../images/medal/medal45_80x80.png) no-repeat center;
+}
+.medal_45_99 {
+    background: url(../../images/medal/medal45_99x99.png) no-repeat center;
+}
+.medal_46_40 {
+    background: url(../../images/medal/medal46_40x40.png) no-repeat center;
+}
+.medal_46_67 {
+    background: url(../../images/medal/medal46_67x67.png) no-repeat center;
+}
+.medal_46_80 {
+    background: url(../../images/medal/medal46_80x80.png) no-repeat center;
+}
+.medal_46_99 {
+    background: url(../../images/medal/medal46_99x99.png) no-repeat center;
+}
+.medal_47_40 {
+    background: url(../../images/medal/medal47_40x40.png) no-repeat center;
+}
+.medal_47_67 {
+    background: url(../../images/medal/medal47_67x67.png) no-repeat center;
+}
+.medal_47_80 {
+    background: url(../../images/medal/medal47_80x80.png) no-repeat center;
+}
+.medal_47_99 {
+    background: url(../../images/medal/medal47_99x99.png) no-repeat center;
+}
+.medal_48_40 {
+    background: url(../../images/medal/medal48_40x40.png) no-repeat center;
+}
+.medal_48_67 {
+    background: url(../../images/medal/medal48_67x67.png) no-repeat center;
+}
+.medal_48_80 {
+    background: url(../../images/medal/medal48_80x80.png) no-repeat center;
+}
+.medal_48_99 {
+    background: url(../../images/medal/medal48_99x99.png) no-repeat center;
+}
+.medal_49_40 {
+    background: url(../../images/medal/medal49_40x40.png) no-repeat center;
+}
+.medal_49_67 {
+    background: url(../../images/medal/medal49_67x67.png) no-repeat center;
+}
+.medal_49_80 {
+    background: url(../../images/medal/medal49_80x80.png) no-repeat center;
+}
+.medal_49_99 {
+    background: url(../../images/medal/medal49_99x99.png) no-repeat center;
+}
+.medal_50_40 {
+    background: url(../../images/medal/medal50_40x40.png) no-repeat center;
+}
+.medal_50_67 {
+    background: url(../../images/medal/medal50_67x67.png) no-repeat center;
+}
+.medal_50_80 {
+    background: url(../../images/medal/medal50_80x80.png) no-repeat center;
+}
+.medal_50_99 {
+    background: url(../../images/medal/medal50_99x99.png) no-repeat center;
+}
+.medal_51_40 {
+    background: url(../../images/medal/medal51_40x40.png) no-repeat center;
+}
+.medal_51_67 {
+    background: url(../../images/medal/medal51_67x67.png) no-repeat center;
+}
+.medal_51_80 {
+    background: url(../../images/medal/medal51_80x80.png) no-repeat center;
+}
+.medal_51_99 {
+    background: url(../../images/medal/medal51_99x99.png) no-repeat center;
+}
+.medal_52_40 {
+    background: url(../../images/medal/medal52_40x40.png) no-repeat center;
+}
+.medal_52_67 {
+    background: url(../../images/medal/medal52_67x67.png) no-repeat center;
+}
+.medal_52_80 {
+    background: url(../../images/medal/medal52_80x80.png) no-repeat center;
+}
+.medal_52_99 {
+    background: url(../../images/medal/medal52_99x99.png) no-repeat center;
+}
+.medal_53_40 {
+     background: url(../../images/medal/medal53_40x40.png) no-repeat center;
+ }
+.medal_53_67 {
+    background: url(../../images/medal/medal53_67x67.png) no-repeat center;
+}
+.medal_53_80 {
+    background: url(../../images/medal/medal53_80x80.png) no-repeat center;
+}
+.medal_53_99 {
+    background: url(../../images/medal/medal53_99x99.png) no-repeat center;
+}
+/*54为永久头像框，使用图片相同*/
+.medal_54_40 {
+    background: url(../../images/medal/medal53_40x40.png) no-repeat center;
+}
+.medal_54_67 {
+    background: url(../../images/medal/medal53_67x67.png) no-repeat center;
+}
+.medal_54_80 {
+    background: url(../../images/medal/medal53_80x80.png) no-repeat center;
+}
+.medal_54_99 {
+    background: url(../../images/medal/medal53_99x99.png) no-repeat center;
+}
+.medal_55_40 {
+    background: url(../../images/medal/medal55_40x40.png) no-repeat center;
+}
+.medal_55_67 {
+    background: url(../../images/medal/medal55_67x67.png) no-repeat center;
+}
+.medal_55_80 {
+    background: url(../../images/medal/medal55_80x80.png) no-repeat center;
+}
+.medal_55_99 {
+    background: url(../../images/medal/medal55_99x99.png) no-repeat center;
+}
+
+.medal_56_40 {
+    background: url(../../images/medal/medal56_40x40.png) no-repeat center;
+}
+.medal_56_67 {
+    background: url(../../images/medal/medal56_67x67.png) no-repeat center;
+}
+.medal_56_80 {
+    background: url(../../images/medal/medal56_80x80.png) no-repeat center;
+}
+.medal_56_99 {
+    background: url(../../images/medal/medal56_99x99.png) no-repeat center;
+}
+
+
+.medal_57_40 {
+    background: url(../../images/medal/medal57_40x40.png) no-repeat center;
+}
+.medal_57_67 {
+    background: url(../../images/medal/medal57_67x67.png) no-repeat center;
+}
+.medal_57_80 {
+    background: url(../../images/medal/medal57_80x80.png) no-repeat center;
+}
+.medal_57_99 {
+    background: url(../../images/medal/medal57_99x99.png) no-repeat center;
+}
+
+.medal_58_40 {
+    background: url(../../images/medal/medal58_40x40.png) no-repeat center;
+}
+.medal_58_67 {
+    background: url(../../images/medal/medal58_67x67.png) no-repeat center;
+}
+.medal_58_80 {
+    background: url(../../images/medal/medal58_80x80.png) no-repeat center;
+}
+.medal_58_99 {
+    background: url(../../images/medal/medal58_99x99.png) no-repeat center;
+}
+
+.medal_59_40 {
+    background: url(../../images/medal/medal59_40x40.png) no-repeat center;
+}
+.medal_59_67 {
+    background: url(../../images/medal/medal59_67x67.png) no-repeat center;
+}
+.medal_59_80 {
+    background: url(../../images/medal/medal59_80x80.png) no-repeat center;
+}
+.medal_59_99 {
+    background: url(../../images/medal/medal59_99x99.png) no-repeat center;
+}
+
+/*头像挂件 end*/
+.J_Review .floor{
+    margin-top: 10px;
+    font-size: 18px;
+    color: #969696;
+    text-align: center;
+}
+
+#cnzz_stat_icon_1276028418 {
+	display:none;
+}

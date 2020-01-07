@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="nav-top" th:fragment="headers">
+    <div class="ly-wrap">
+        <a class="logo" href="" title="畢業設計"></a>
+        <ul class="login-info ly-fr">
+            <li class="userinfo">
+                <a class="avatar" th:href="@{Userinformation}" target="_blank" rel="nofollow">
+                    <img class="lazyload" data-original="https://avatar.kuangxiangit.com/novel/img-2019-08/5388319/avatar/thumb_ac2c28c10bb9b272c7ef9b9ef978742f.jpg" th:src="@{Userinformation}" alt="">
+                    <span class='medal medal_59_40'></span>                    </a>
+                <a class="nickname" th:href="@{Userinformation}" target="_blank" rel="nofollow" th:text="${session.logininfo.getUsername()}">什么都不彻底</a>
+                <i class="icon-level-p"></i>
+                <b class="level">LV9世外高人</b>
+                <a class="logout" th:href="@{loginout}"  rel="nofollow">[退出]</a>
+
+            </li>
+        </ul>
+        <form class="search-form" th:action="@{selectbook}" name="" method="get">
+            <div class="input-group">
+                <input name="keyword" autocomplete='off' type="text" placeholder="搜索更多作品或作者" >
+                <!--      autocomplete="off" x-webkit-speech="" data-type="1" x-webkit-grammar="builtin:translate" placeholder="搜索更多作品或作者"        data-url="https://www.ciweimao.com/get-search-book-list/0-0-0-0-0-0/全部/{key}"-->
+                <button type="submit"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

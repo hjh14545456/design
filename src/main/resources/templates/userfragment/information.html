@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="homepage-box border-box-shadow ly-fl" th:fragment="information">
+    <div class="homepage-hd info-hd">
+        <h3 class="title icon-info">我的基本资料</h3>
+        <a class="J_InfoModify btn btn-warning btn-operate" href="javascript:;">修改</a>
+        <a class="J_InfoSubmit btn btn-warning btn-operate hide" href="javascript:;">保存</a>
+    </div>
+    <div class="homepage-bd info-bd">
+        <ul class="J_InfoList info-list">
+            <li>
+                <label>账户名：</label>
+                <div class="item">书客61539831999</div>
+            </li>
+            <li>
+                <label>书&nbsp;&nbsp;&nbsp;龄：</label>
+                <div class="item">1年</div>
+            </li>
+            <li>
+                <label>昵&nbsp;&nbsp;&nbsp;称：</label>
+                <div class="support-mod item nickname" th:text="${session.logininfo.getUsername()}">什么都不彻底</div>
+                <div class="ly-fl item hide">
+                    <input type="text" name="newNickname" class="newNickname" placeholder="请输入昵称"/>
+                </div>
+                <div class="wrongBox hide">
+                    <b>*</b><span class="tip-msg">不支持非法词汇和特殊符号</span>
+                </div>
+            </li>
+            <li>
+                <label>性&nbsp;&nbsp;&nbsp;别：</label>
+                <div class="support-mod item sex" data-value="1" th:text="${session.logininfo.getSex()}">男</div>
+                <div class="item input-radio J_InputRadio selectSex hide">
+                    <select name="sex" id="sex">
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </div>
+            </li>
+            <li>
+                <label>邮&nbsp;&nbsp;&nbsp;箱：</label>
+                <div class="item"><b th:text="${session.logininfo.getEmail()}">未绑定</b></div>
+            </li>
+            <li>
+                <label>手机号：</label>
+                <div class="support-mod item">-152****2763  </div>
+                <!--<a href="javascript:;" class="J_BindMobile btn btn-primary btn-modify hide" data-value="https://www.ciweimao.com/reader/modify_mobile?type=1&redirect=https%3A%2F%2Fwww.ciweimao.com%2Freader%2Fmy_info">换绑</a>-->
+                <div class="wrongBox hide">
+                    <b>*</b><span class="tip-msg" th:text="${session.logininfo.getTelephone()}">请绑定手机号码</span>
+                </div>
+            </li>
+            <li>
+                <label>登录密码：</label>
+                <div class="support-mod item">-</div>
+                <!--<a href="javascript:;" class="J_ModifyPwd btn btn-primary btn-modify hide" data-value="https://www.ciweimao.com/signup/modify_passwd_page?type=1&redirect=https%3A%2F%2Fwww.ciweimao.com%2Freader%2Fmy_info">修改</a>-->
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

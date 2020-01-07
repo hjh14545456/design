@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="bookshelf">
+<div class="act-tab homepage-box ly-fl">
+    <div class="homepage-hd homepage-hd-mine border-box-shadow">
+
+
+        <a class="act-tab-btn ly-fl" href="javascript:;">我的书架</a>
+
+
+        <!-- <a class="act-tab-btn ly-fl" href="javascript:;">我的书架</a> -->
+        <ul class="J_BookshelfTabTitles act-tab-titles">
+            <li  class="selected" data-bookshelf-id="1"><a href="https://www.ciweimao.com/bookshelf/my_book_shelf/1">我的书架</a></li>
+        </ul>
+        <a class="manage-bookshelf ly-fl" id="J_ManageBookshelf" href="javascript:;"></a>
+        <div class="operate-bookshelf ly-fr">
+            <a class="J_BtnOperateAll btn-operate" href="javascript:;">批量操作</a>
+            <a class="J_BtnComplete btn-operate btn-complete" href="javascript:;">完成</a>
+            <a class="btn-operate btn-rank" href="#">综合排序</a>
+            <a class="btn-operate btn-cover" href="#">列表模式</a>
+        </div>
+    </div>
+    <div class="homepage-bd bookshelf-list">
+        <ul id="current_shelf" class="book-list selected" data-shelf-id="5199311" >
+            <li data-book-id="100131318" th:each="b:${session.books}">
+                <div class="img">
+                    <a href="#" target="_blank">
+                        <!--data-original="https://novel-cdn.kuangxiangit.com/uploads/allimg/c191020/20-10-19170258-14976.jpg"-->
+                        <img class="lazyload" th:src="${b.getCoverpath()}"     alt="不好意思，我是氪金玩家">
+                        <div class="mask"></div>
+                        <div class="info">
+                            <p>更新至：</p>
+                            <p >第一百一十章 方便剧情发展的美（shen）塔（qian）领域</p>
+                            <br/>
+                            <p>更新时间：</p>
+                            2019-12-06 12:00:02</p>
+                        </div>
+                    </a>
+                    <div class="operate-book">
+                        <div class="J_OperateBox operate-box">
+
+
+
+
+                            <button  th:onclick="|delbook(this,${b.getBookId()})|">移出书架</button>
+                            <!--<span onclick="" name="bookout">移出书架</span>-->
+                            <!--<ul class="operate-list">-->
+                                <!--&lt;!&ndash; <li><a class="J_IsTop" href="javascript:;" data-is-top="0">置顶</a></li> &ndash;&gt;-->
+
+
+                                <!--<li class="J_MoveBook move-book">-->
+                                    <!--<a href="javascript:;">移动至</a>-->
+                                <!--</li>-->
+                                <!--<li><a class="J_DeleteBook" href="javascript:;">删除</a></li>-->
+                                <!--<li><a class="J_IsAutoBuy" href="javascript:;" data-auto-buy="0">自动订阅</a></li>-->
+                            <!--</ul>-->
+                            <script type="text/javascript" th:src="@{js/layer/layer.js}"></script>
+                            <script>
+                                function delbook(elem,bookid) {
+
+                                    layer.confirm('确认删除?', {icon: 3, title:'提示'}, function(index){
+                                        //do something
+                                        $.get("/bookout?bookid="+bookid,function () {
+                                            $(elem).parent().parent().parent().parent().remove();
+                                        })
+                                        layer.close(index);
+                                    });
+
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <a class="J_BtnSelect btn-radio" th:href="@{BookDetails(bookId=${b.getBookId()})}"></a>
+                </div>
+                <a th:href="@{BookDetails(bookId=${b.getBookId()})}" th:title="${b.getBookName()}" target="_blank"><h3 th:text="${b.getBookName()}" class="title" >
+                    <i class="icon-new"></i>
+
+
+                    不好意思，我是氪金玩家
+                </h3></a>
+                <p class="intro"><span th:text="${b.getWordNum()}">228.3万</span>︱<span th:text="${b.getBookType()}">动漫穿越</span></p>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+
+<div class="operate-all-books">
+    <div class="ly-wrap">
+        <div class="inner-box ly-fr">
+            <a class="J_BtnSelectAll btn-checkbox btn-operate" href="javascript:;">全选</a>
+            <div class="J_MoveBook move-book" data-type="multiple">
+                <a class="btn-operate" href="javascript:;">移动至</a>
+                <ul class="move-book-list bottom">
+                </ul>
+            </div>
+            <!-- <a class="J_IsTop btn-operate" href="javascript:;" data-type="multiple" data-is-top="0">置顶</a> -->
+            <a class="J_DeleteBook btn-operate" href="javascript:;" data-type="multiple">删除</a>
+        </div>
+    </div>
+</div>
+<div class="go-top" id="J_GoTop">
+    <a href="javascript:;">返回顶部</a>
+</div>
+
+<!--管理书架-->
+<div id="J_DialogManage" class="dialog-box dialog-manage" style="display:none"><!---->
+    <div class="bookshelf-item">
+        <div class="cnt-box">
+            <span class="bookshelf" data-bookshelf-id="5199311">我的书架</span>
+            <a class="btn-modify" href="javascript:;">改名</a>
+        </div>
+        <div class="input-group hide">
+            <input type="text" class="form-control" name="bookshelf" placeholder="请输入书架名称,9字以内" maxlength="9">
+            <a class="btn-confirm" href="javascript:;">确定</a>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="J_NewBookshelf btn btn-default">新建书架 <b>(限初V)</b></button>
+        <button class="J_BtnConfirm btn btn-warning">保存</button>
+    </div>
+</div>
+</div>
+
+</html>

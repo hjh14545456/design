@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html">
+    
+    <meta property="qc:admins" content="2554576230602773526375">
+    <meta name="baidu-site-verification" content="81BLZ1C2Te">
+    <!-- 百度验证  -->
+    <meta name="baidu-site-verification" content="23p76Y9LU3">
+    <!--360验证-->
+    <meta name="360-site-verification" content="1247af3cd890cf522c64a0188211dfba">
+    <!--神马平台验证-->
+    <meta name="shenma-site-verification" content="6ddf919e460df88fe12310e2097a23cc_1497866600">
+    <title>毕业设计</title>
+    <meta name="keywords" content="综漫小说，动漫小说，火影小说，海贼小说，动漫同人">
+    <meta name="description" content="刺猬猫提供最新好看的全本二次元穿越，娘化百合，各种萌化后宫小说在线阅读，综漫小说，动漫小说，火影小说，海贼小说，动漫同人">
+	<!--wap-->
+		<meta name="mobile-agent" content="format=xhtml; url=https://wap.ciweimao.com">
+	<meta name="mobile-agent" content="format=html5; url=https://wap.ciweimao.com">
+	    <link rel="shortcut icon" type="image/x-icon" href=""/>
+    
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/style-1.2.3.css}">
+    <!--<link rel="stylesheet" type="text/css" href=''/>-->
+    <!--<link rel="stylesheet" type="text/css" href=''/>-->
+        <!--<script type="text/javascript" language="javascript" src=''></script>-->
+    <script type="text/javascript" language="javascript" th:src="@{scripts/bootstrap/js/jquery.js}"></script>
+        <script type="text/javascript">
+        var HB = HB || {};
+        HB.config = {jsPath:'https://www.ciweimao.com/resources/js', rootPath:'https://www.ciweimao.com/'};
+        HB.book = {book_id: "", chapter_id: "", up_reader_id: "", is_paid: 0};
+        HB.userinfo = {reader_id: 0,tel_num: '',license: '',redis_license: '', reader_name: '""', avatar_thumb_url: '""', vip_lv: ""};
+        HB.urlinfo ={redirect:'https://www.ciweimao.com/reader/modify_mobile?redirect=https%3A%2F%2Fwww.ciweimao.com%2F'};
+    </script>
+    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" th:src="@{js/base.js}"></script>
+    <script type="text/javascript" th:src="@{js/artDialog/6.0.4/dialog-min.js}"></script>
+
+    <script>
+
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1dbadbc80ffab52435c688db7b756e3a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<div>
+<div id="bdstat" style="display: none"></div>
+<div th:if="${session.logininfo}!=null"><div th:replace="~{fragment/headers::headers}"></div></div>
+<div th:if="${session.logininfo}==null"><div th:replace="~{fragment/header::header}"></div></div>
+    </div>
+<!--<div class="nav-top">-->
+    <!--<div class="ly-wrap">-->
+        <!--<a class="logo" href="" title="畢業設計"></a>-->
+        <!--<ul class="login-info ly-fr">-->
+            <!--<li><a href="#" rel="nofollow">登录</a></li>-->
+            <!--<li class="line">|</li>-->
+            <!--<li><a href="#" rel="nofollow">注册</a></li>-->
+        <!--</ul>-->
+        <!--<form class="search-form" action="" name="" method="post">-->
+            <!--<div class="input-group">-->
+                <!--&lt;!&ndash;<input name="keyword" autocomplete='off' type="text" autocomplete="off" x-webkit-speech="" data-type="1" x-webkit-grammar="builtin:translate" placeholder="搜索更多作品或作者" data-url="#">&ndash;&gt;-->
+                <!--&lt;!&ndash;data-url="https://www.ciweimao.com/get-search-book-list/0-0-0-0-0-0/全部/{key}"&ndash;&gt;-->
+                <!--<button type="submit"></button>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--  欢迎每日登录 领取推荐票 -->
+<div class="dialogLoginBox" id="J_DialogLoginBox" style="display: none;">
+    <div class="bd">
+        <p>  你好~~</p>
+        <p>送你 <b>
+			0		</b> 张推荐票哦~</p>
+        <p class="tips">登陆刺猬猫APP，<br>完成每日签到任务，<br>更有好礼相送。</p>
+    </div>
+    <div class="ft">
+        <!--        <a class="btn-gettuijian" href="javascript:;" id="J_GetTJTicket">领取推荐票</a>-->
+        <p class="auto-close"><i id="J_Timer">3</i>s后关闭</p>
+    </div>
+</div>
+<div class="header">
+    <div class="menu-wrap" id="J_MenuFixed">
+        <div class="ly-wrap menu-inner">
+            <ul class="menu-nav ly-fl clearfix">
+                <li><a href="" class='selected' rel="nofollow">首页</a></li>
+                <li><a href="#">排行</a></li>
+        		<li><a href="#">书库</a></li>
+                <li><a href="#">漫画</a></li>
+                <li style="display:none;"><a href="#">游戏</a></li>
+                
+                <li><a href="#">社区</a></li>
+            </ul>
+            <ul class="special ly-fr clearfix">
+                <li class="p-tutelage"><a href="#" target="_blank" rel="nofollow">家长监护</a></li>
+            	<li class="recharge"><a href="#" rel="nofollow"><i></i>充值中心</a></li>
+            	<li class="author"><a href="#" target="_blank" rel="nofollow"><i></i>作者后台</a></li>
+				<li class="Reporting"><a href="javascript:;" class="J_footReport">我要举报</a></li>
+            </ul>
+        </div>
+        <b></b>
+    </div>
+    </div>
+<!--container start-->
+<div class="banner" id="J_Banner" >
+    <!--style="background-image: url(resources/image/carousel/bg-carousel-1.jpg);background-repeat: repeat;"-->
+	<div class="ly-wrap">
+			<div class="J_Slider banner-top" data-style="filter">
+				<a href="javascript:;" class="slider-btn prev"></a>
+				<a href="javascript:;" class="slider-btn next"></a>
+				<ul>
+                                         					<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20191101102150911.jpg">
+						<!--<a target="_blank" href="activity/publicity_19_nov.html" target="_blank">-->
+                            <a href="#">
+							<img class="lazyload" th:src="@{images/activity_publicity_19_may/book_name.png}" data-original="novel/img_index_recommend/carousel/20191101102200954.jpg" alt="">
+						</a>
+					</li>
+										<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20191108040040886.jpg">
+						<!--<a target="_blank" href="book/100131073.html" target="_blank">-->
+                                            <a href="#">
+							<img class="lazyload" th:src="@{images/transparent.png}" data-original="novel/img_index_recommend/carousel/20191108040035305.jpg" alt="">
+						</a>
+					</li>
+										<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20191108035748238.jpg">
+						<!--<a target="_blank" href="book/100129904.html" target="_blank">-->
+                                            <a href="#">
+							<img class="lazyload" th:src="@{images/transparent.png}" data-original="novel/img_index_recommend/carousel/20191108035742142.jpg" alt="">
+						</a>
+					</li>
+										<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20191108035727586.jpg">
+						<!--<a target="_blank" href="book/100128623.html" target="_blank">-->
+                                            <a href="#">
+							<img class="lazyload" th:src="@{images/transparent.png}" data-original="novel/img_index_recommend/carousel/20191108035723778.jpg" alt="">
+						</a>
+					</li>
+										<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20191108035709513.jpg">
+						<!--<a target="_blank" href="book/100120060.html" target="_blank">-->
+                                            <a href="#">
+							<img class="lazyload" th:src="@{images/transparent.png}" data-original="novel/img_index_recommend/carousel/20191108035704716.jpg" alt="">
+						</a>
+					</li>
+										<li data-bg-src="https://avatar.kuangxiangit.com/novel/img_index_recommend/carousel/20190301073418751.jpg">
+						<!--<a target="_blank" href="book/booklist_detail-12055.html" target="_blank">-->
+                                            <a href="#">
+							<img class="lazyload" th:src="@{images/transparent.png}" data-original="novel/img_index_recommend/carousel/20190301073429442.jpg" alt="">
+						</a>
+					</li>
+					                    				</ul>
+			</div>
+			<div class="news">
+                <h3 class="tit">最新活动 <a target="_blank" class="btn btn-more ly-fr" href="#">更多 &gt;</a></h3>
+				<ul>               
+                    <!--<li><a target="_blank" href="" title="[征文]刺猬猫阅读IP征文大赛"><span>[征文]</span>刺猬猫阅读IP征文大赛</a></li>-->
+                    <li><a href="#" title="刺猬猫作者福利">刺猬猫作者福利<i class="icon icon-recommend"></i></a></li>
+                    					                    <li><a target="_blank" href="#" title="猫娘百科—就算世界末日也要玩碧蓝航线">猫娘百科—就算世界末日也要玩碧蓝航线</a></li>
+					                    <li><a target="_blank" href="#" title="猫娘百科—无敌的我何须亲自动手">猫娘百科—无敌的我何须亲自动手</a></li>
+					                    <li><a target="_blank" href="#" title="刺猬猫919四周年庆典">刺猬猫919四周年庆典</a></li>
+					                    <li><a target="_blank" href="#" title="猫娘百科—女友全都是厉鬼">猫娘百科—女友全都是厉鬼</a></li>
+					                    <li><a target="_blank" href="#" title="刺猬猫游戏征文大赛">刺猬猫游戏征文大赛</a></li>
+					                    <li><a target="_blank" href="#" title="猫娘百科—从圣杯战争开始的旅途">猫娘百科—从圣杯战争开始的旅途</a></li>
+					                    <li><a target="_blank" href="#" title="刺猬猫小卖部 | 周边店开业">刺猬猫小卖部 | 周边店开业</a></li>
+					                    <li><a target="_blank" href="#" title="猫娘百科—我的个性是卡片">猫娘百科—我的个性是卡片</a></li>
+									</ul>
+			</div>
+		</div>
+</div>
+<div class="container">
+    <div class="ly-wrap">
+	<!--content-box zhaiwen start-->
+        <div class="content-box">
+            <div class="mod-box">
+                                <div class="mod-tit">
+                        <h3 class="icon-zhai">宅文推荐                        <sub>200位宅文大神鼎力打造</sub>
+                        <a class="btn btn-more ly-fr" href="#">更多 &gt;</a></h3>
+                </div>
+                <div class="mod-body">
+                        <div class="slider-wrap fl">
+                                <div id="carousel" class="carousel">
+                                        <div class="slides">
+                                                                                            <div class="slideItem item1">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c191104/04-11-19081715-95293-100133181.jpg" title="只凭着1级能力的我将蹂躏一切" alt="只凭着1级能力的我将蹂躏一切">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item2">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c190518/18-05-19202940-8506-100107171.jpg" title="与凯尔希的同居日常" alt="与凯尔希的同居日常">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item3">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c190305/05-03-19092909-61123-100095476.jpg" title="山海美食谱" alt="山海美食谱">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item4">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c191030/30-10-19213946-50773-100130720.jpg" title="带着英雄联盟符文的综漫日常" alt="带着英雄联盟符文的综漫日常">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item5">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c190818/18-08-19152136-35471-100120890.jpg" title="老娘，参上！" alt="老娘，参上！">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item6">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c191013/13-10-19114238-96416-100120230.jpg" title="霸道律者恋上我" alt="霸道律者恋上我">
+                                                                                                                        </a>
+                                                </div>
+                                                                                             <div class="slideItem item7">
+                                                        <a class="img" href="#" target="_blank">
+                                                                <img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c190118/18-01-19200822-77245-100091710.jpg" title="舰娘与新时代" alt="舰娘与新时代">
+                                                                                                                        </a>
+                                                </div>
+                                                
+                                        </div>
+                                        <div class="description">
+                                        			
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="只凭着1级能力的我将蹂躏一切">只凭着1级能力的我将蹂躏一切</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">捡九</a> 著</p>
+                                                        
+                                                        <p class="desc">在这个强者至上的时代，被鉴定为最低的1级能力是什么感受？齐雷默默地看着跪在地上求饶的S级强者，陷入了感慨……这是一个关于不认输的故事。只凭着1级能力的他——将蹂躏一切。(本书已签约，可放心收藏，每日保底两更，欢迎吐槽评论！求支持，多谢！)</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                	
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="与凯尔希的同居日常">与凯尔希的同居日常</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">布声布响</a> 著</p>
+                                                        
+                                                        <p class="desc">“从今天开始，你就和我一起住。”面无表情的凯尔希小姐，冷冷地说道。看着四周那些干员们幸灾乐祸的表情，罗数有些不好意思，扭捏道：“这样是不是不太好？”“嗯？”凯尔希小姐默默的唤出了自己的召唤物：“你说什么？”“没什么，我坚决服从组织安排！”罗数看着那头黑色的怪物，看着自己青梅竹马微红的脸颊，果断的认怂……毕竟，能够回到她身边的感觉也并不坏……就这样，罗数与《明日方舟》中罗德岛医疗部门总负责人凯尔希小姐的同居日常开始了……【本书唯一指定读者群（明日方舟：缄默的捕鲸船：535091587）欢迎各位博士加入~】</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="山海美食谱">山海美食谱</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">一只老猫儿</a> 著</p>
+                                                        
+                                                        <p class="desc">本书也叫：《饿魔少女与人宠》《山海经生物灭绝录》《我的食物不可能都是人》“我饕餮就是饿死，头撞树上，死外边，都不吃你们一口东西！”此时，一位厨娘路过……贝小萌：“真香……”洪荒山海道，品千妖百味。“我贝小萌，要吃遍整个洪荒山海，请叫我，什么都吃·贝，简称：贝爷！”“前面那个九尾狐姐姐，你长得像我奶娘，不要跑，我不吃你，我只吃奶……”“嗨，那个蛮牛，我需要你的角，明年你就会长新的，你怕什么？”“白虎哥哥，接你宝剑一用，我拿去切菜……”饕餮少女贝小萌，得到一本祖先留下食谱，里面记录无数美食，从此她踏上寻找“美食”之路，去到哪里都会吃吃吃……（吃兽）（吃妖）（人型不吃，去掉头可以）（最爱喝奶……）贝小萌；胸大必有奶！</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                	
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="带着英雄联盟符文的综漫日常">带着英雄联盟符文的综漫日常</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">大汉弘农王</a> 著</p>
+                                                        
+                                                        <p class="desc">这是被符文砸死的刘辩穿越到日常世界成为了一个日本纸片人的日常故事。日常故事等一下，这养着两条龙的表姐，惰落的天使同学，被砍成两段都死不掉的恶魔蛇女，晚上时不时还能看到几个魑魅魍魉，这不只是日常吧。不过精彩一点的生活倒也不错，什么时候找托尔带我去异世界耍耍呢。</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                	
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="老娘，参上！">老娘，参上！</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">罪月</a> 著</p>
+                                                        
+                                                        <p class="desc">本书全名：我哥炸飞了全家，害的我无法生长，我要找到我哥和我哥的研究资料，解决自身无法生长问题，然后报复性的打爆我哥脑袋，帮我哥收拾烂摊子，顺手拯救世界，给可爱少女当萌宠的两三事日文名：おれ、参上（欧嘞，三舅！）以上内容简介，是不会写简介的作者，挤破脑子想出来的，具体内容请看本书全名（这几话完全是为了凑简介字数用的，请不要在意。举爪，卖萌，吐舌(ૢ˃ꌂ˂ૢ)）群：856509806</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                	
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="霸道律者恋上我">霸道律者恋上我</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">上帝是个宅</a> 著</p>
+                                                        
+                                                        <p class="desc">霸道绿者恋上我——————————————————————雷电女王恋上我——完结神州言情录——完结天命家计事——完结只狐·樱逝二度——完结河豚默示录——进行中</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                	
+                                                <div class="desc-wrap">
+                                                        <h3><a href="#" target="_blank" title="舰娘与新时代">舰娘与新时代</a></h3>
+                                                        <p class="author"><a target="_blank" href="#">更新界的薛定谔</a> 著</p>
+                                                        
+                                                        <p class="desc">这是一个，人类与舰娘与深海和“谐”共处的未来。Wo酱和赤城加贺的吃播视频火爆全网，并且每年都会在大胃王比赛上一争高低，让主办方留下肉疼的泪水。前卫代言的平底锅因其优质的品质走入千家万户，并得到了一至的好评。岛风海运和空想海运今日依旧在激烈的竞争着，但由于双方时不时就会发生锅炉爆炸或是莫名翻船等事件导致送货延迟，所以在选择两者作为运输时请做好心理准备。维内托组成了VV保护协会，每天都在猎杀那些在网络上黑她们的沙雕网友。到了深海与舰娘之间的友好演习时，劳模紫白菜依旧在挨打......所有的俾斯麦依旧为北宅而感到头疼，并且在每个无奈的夜晚在酒吧的角落里酗酒，而酒吧的门口总会停着一辆车，车上坐着等待时机胡德......扫黄组今日依旧忙碌，因为北宅们又开始活跃了......【实物请以正文为标准】</p>
+                                                        <a class="btn btn-warning btn-md" href="#" target="_blank">书籍详情</a>
+                                                </div>
+                                                                                        </div>
+                                </div>
+                        </div>
+                        <ul class="book-list book-list-one">
+                                                            <li>
+                                        <a class="img" href="#" target="_blank"><img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c191022/22-10-19145558-7881.jpg" title="芥雏子小姐只想看书" alt="芥雏子小姐只想看书"></a>
+                                        <div class="info">
+                                                <h3 class="title"><a href="#" title="芥雏子小姐只想看书" target="_blank">芥雏子小姐只想看书</a></h3>
+                                                <p class="author"><a target="_blank" href="#">污月</a></p>
+                                                <p class="desc">妖魔乱舞，百家争鸣。这里有千古一帝的始皇嬴政，有力拔山兮的少女项羽，有能化身赤龙的天选之子刘邦，有运筹帷幄、决胜千里的张良，有能屈能伸、多多益善的兵仙韩信，有驾月乘风的萧何，有指鹿为马的术士赵高，……这是型月世界观下的秦末乱世。身为吸血种的芥雏子小姐，今天也要为长不大的项羽姐姐而努力。“首先，让我先为项羽姐姐打造一台半人马机甲。”</p>
+                                                <a class="btn-read" href="#">立即阅读</a>
+                                        </div>
+                                </li>
+                                                            <li>
+                                        <a class="img" href="#" target="_blank"><img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c191001/01-10-19214736-949-100128962.jpg" title="有何贵干！" alt="有何贵干！"></a>
+                                        <div class="info">
+                                                <h3 class="title"><a href="#" title="有何贵干！" target="_blank">有何贵干！</a></h3>
+                                                <p class="author"><a target="_blank" href="#">余阳</a></p>
+                                                <p class="desc">啊啊啊啊......我懂得，我比谁都更加清楚，身为一个毫无特长和才能的死宅，妄想在这种超自然事件中活下去，不舍弃一点东西的话肯定是不行的。正因如此，我才真的明白了，有些时候，有些东西，有些情感是多余的，是一种累赘。越是努力工于心计，越会发现自身的极限所在...那主神所给予的帮助技能，我在这一刻终于明白了它的用处。累赘的东西，丢掉就好了。舍弃所有没必要的，只要能够让我活下来，哪怕遍体鳞伤也比真的死了要好！“Link·Start。”“撒！看我...一命通关。”</p>
+                                                <a class="btn-read" href="#">立即阅读</a>
+                                        </div>
+                                </li>
+                                                            <li>
+                                        <a class="img" href="#" target="_blank"><img class="lazyload" th:src="@{images/transparent.png}" data-original="uploads/allimg/c190925/25-09-19121850-31121.jpg" title="逢魔时王表哥的狗血青春物语" alt="逢魔时王表哥的狗血青春物语"></a>
+                                        <div class="info">
+                                                <h3 class="title"><a href="#" title="逢魔时王表哥的狗血青春物语" target="_blank">逢魔时王表哥的狗血青春物语</a></h3>
+                                                <p class="author"><a target="_blank" href="#">破空蛇龙</a></p>
+                                                <p class="desc">某年某月某日，姚夏与以往的同学开同学会，互相吹嘘。“我的爸爸是火影！”“我的爸爸是革命家！”“我的爸爸是奥特战士！”姚夏沉默了一阵，说道，“我的表弟是逢魔时王。”</p>
+                                                <a class="btn-read" href="#">立即阅读</a>
+                                        </div>
+                                </li>
+                                                    </ul>
+                </div>
+                            </div>
+            <!--content-box 右侧 周点击榜 start-->
+                        <div class="recommend-box ly-fr">
+                    <div class="title-box icon-book">
+                            <h3 class="title">周点击榜</h3>
+                            <p class="sub-title">我要的次元</p>
+                            <a class="btn btn-more" href="#" target="_blank">更多 &gt;</a>
+                    </div>
+                    <ul>
+                                                    <li class="top1">
+                                <div class="info">
+                                  <i class="icon-top">NO.1</i>
+                                  <h3><a href="#" target="_blank" title="无惨我老婆">无惨我老婆</a></h3>
+                                  <p class="author"><a target="_blank" href="#">老狗</a></p>
+                                  <p class="num"><span>159.4万</span>点击</p>
+                                </div>
+                                <a class="img" href="#" title="无惨我老婆"><img class="lazyload" th:src="@{/images/transparent.png}" data-original="uploads/allimg/c191015/15-10-19140836-83963.jpg" alt="无惨我老婆"></a>
+                              </li>
+                                                            <li class="top">
+                                  <a href="#" target="_blank" title="我，古神，超次元交流群主">
+                                    <i class="icon-top">2</i><b>[动漫穿越]</b>我，古神，超次元交流群主                                    <span class="num">107.0万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="奥托，我不是你儿子">
+                                    <i class="icon-top">3</i><b>[动漫穿越]</b>奥托，我不是你儿子                                    <span class="num">99.7万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="召唤个女王当老婆">
+                                    <i class="icon-top">4</i><b>[动漫穿越]</b>召唤个女王当老婆                                    <span class="num">99.2万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="太太，我果然还是更喜欢你啊">
+                                    <i class="icon-top">5</i><b>[青春日常]</b>太太，我果然还是更喜欢你啊                                    <span class="num">82.8万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="混在综漫吃软饭">
+                                    <i class="icon-top">6</i><b>[动漫穿越]</b>混在综漫吃软饭                                    <span class="num">75.4万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="满级的我选择成为奴隶商人">
+                                    <i class="icon-top">7</i><b>[异界幻想]</b>满级的我选择成为奴隶商人                                    <span class="num">65.5万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="那个，我好像进错主神空间了！">
+                                    <i class="icon-top">8</i><b>[动漫穿越]</b>那个，我好像进错主神空间了！                                    <span class="num">63.2万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="二次的人生如此有趣">
+                                    <i class="icon-top">9</i><b>[青春日常]</b>二次的人生如此有趣                                    <span class="num">59.2万</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="从鬼灭之刃开始的剑圣之旅">
+                                    <i class="icon-top">10</i><b>[动漫穿越]</b>从鬼灭之刃开始的剑圣之旅                                    <span class="num">58.4万</span>
+                                  </a>
+                                </li>
+                                                    </ul>
+            </div>
+                        <!--画风不一样 -->
+                        <div class="banner banner-single">
+                    <a href="#" target="_blank" title="完本小说">
+                            <img class="lazyload" src="resources/images/transparent.png" data-original="novel/img_index_recommend/booklist/20190617045125409.jpg" alt="">
+                    </a>
+            </div>
+                    </div>    
+        <!--content-box zhaiwen end-->
+        
+        <!--content-box zongman start-->
+        <div class="content-box">
+				<div class="mod-box">
+                                    					<div class="mod-tit">
+						<h3 class="icon-zong">综漫推荐<sub>万人在线抢着看</sub><a class="btn btn-more ly-fr" href="#">更多 &gt;</a></h3>
+					</div>
+					<div class="mod-body">
+						<ul class="book-list book-list-two">
+                                                    						<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190930/30-09-19234837-23106-100128791.jpg" alt="于崩坏世界沉睡的旅者">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2019-04/1568988/avatar/thumb_ea5fde9bcca140d45a1e84f1e4.jpg" alt="">【空寂之殇】</div>
+									<div class="desc">已建交流群：568249959…在这崩坏的世界里，永远年轻的老怪物叶某，根据自己的生平得出了以下结论——旅行者の九律令：第一，游戏可要比女孩子有意思多了，莫当舔狗第二，不要对有百合可能性的女孩抱有太大期望第三，浓缩才是净化，正义绝非那几公斤的赘肉第四，长耳朵的不一定是兔子，也可能是狐或驴第五，每个人都是潜在的愉悦犯，故，愉悦至上第六，没有人可以拒绝假面骑士的诱惑，没有第七，只要没有定下决心，那么一切行动皆合理第八，能够阻止你的，只有自己一人，顺从本心第九，未来因其未知性，方才会让人无限期待第十，九大律令有十条这是常识，旅行者本身就是最终的律令。</div>
+									<div class="num">2026<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="于崩坏世界沉睡的旅者" target="_blank">于崩坏世界沉睡的旅者</a></h3>
+							<p class="intro"><span>41.1万</span>︱<span>异界幻想</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190930/30-09-19174421-1759.jpg" alt="开局一人一工厂，成为良善资本家">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2019-11/4683878/avatar/thumb_4b743f6d10d085f1c44186cb13.jpg" alt="">【电源】</div>
+									<div class="desc">“我比任何人都要有良心！”张仪在演讲台上演讲，身后的员工都露出鄙视的眼神。</div>
+									<div class="num">3842<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="开局一人一工厂，成为良善资本家" target="_blank">开局一人一工厂，成为良善资本家</a></h3>
+							<p class="intro"><span>94.8万</span>︱<span>动漫穿越</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191028/28-10-19133050-72314.jpg" alt="我提着龙刃砍鬼的故事">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2018-08/3909756/avatar/thumb_0cc6b8a83fa0bff6d5fce8a8ab.jpg" alt="">【框ser】</div>
+									<div class="desc">我不记得，也不觉得鬼灭的世界里会有花村，还有岛田家啊！而且，为什么我是半藏，源氏呢！？我明明是在拔刀的时候穿越的吧！让我把那个安娜砍了先啊！！……一卷残缺的药方能够造就鬼王，那么来自东方的神龙之力呢？ps:时间线提前，因为蝴蝶家的姐妹超棒！</div>
+									<div class="num">253<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="我提着龙刃砍鬼的故事" target="_blank">我提着龙刃砍鬼的故事</a></h3>
+							<p class="intro"><span>4.2万</span>︱<span>动漫穿越</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191016/16-10-19154632-54112-100129782.jpg" alt="某医师的世界之旅">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2016-08/628208/avatar/thumb_cfbdb233103669090873e0f7be.jpg" alt="">【Icethies】</div>
+									<div class="desc">第二次死亡带来穿越无尽世界的契机，原本觉得自己可能孤独一生的少年从此打开了新世界的大门。“子曾经曰过：暴力是不能解决任何问题的。周医生，你能不能跟先贤学点儿好？”“《吕氏春秋》记载：孔子之劲，举国门之关。孔圣人身高一米九，佩剑而行孔武有力，人家说那句话的前提是当时没多少人打得过他。鲁迅也说过：圣人以理服人：道理或者物理。所以我觉得还OK。”——周白。新人新书求支持~</div>
+									<div class="num">3805<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="某医师的世界之旅" target="_blank">某医师的世界之旅</a></h3>
+							<p class="intro"><span>62.1万</span>︱<span>动漫穿越</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191108/08-11-19135315-38920-100125270.jpg" alt="鬼灭之别叫我铁柱大人">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="" alt="">【万世樱燃】</div>
+									<div class="desc">主角秦海，心理年龄八千岁，是残疾（悲）。秦海：“无惨我见了，差点被秒了，有什么好说的。”开局先送一只手，这团还怎么打？不懂呼吸，但是精通暗算，开局断臂的老阴逼主角自有杀招。唯一效忠对象是不满十岁的女装大佬，这是道德的沦丧还是人性的扭曲？本年度最身残志坚的逆袭励志大戏（误），和九柱之间缠绵悱恻的恩怨情仇（喜提称号：柱与柱之间永远的第三者）又该如何终结？专注鬼灭之刃，预计百万字完结，基本不走原著路线，不咕不咕不咕说三遍。全文慢热，分卷狂魔，社畜作者更新时间基本在夜里。</div>
+									<div class="num">2064<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="鬼灭之别叫我铁柱大人" target="_blank">鬼灭之别叫我铁柱大人</a></h3>
+							<p class="intro"><span>55.8万</span>︱<span>动漫穿越</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190918/18-09-19210905-84833-100126090.jpg" alt="诡镇">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2019-10/2245701/avatar/thumb_331ec0d743f6ec52761b4cb4ba.jpg" alt="">【甜瓜】</div>
+									<div class="desc">这是一个供奉怪异神明的小镇，这是一个恶鬼作祟的小镇，在这里没人会相信你。殴死，砍死，勒死，溺死，毒死，疯死。最可怕的莫过于人性已死。“与其说谁是凶手倒不如说是谁制造了凶手，有时候，人比鬼可怕。”“人心，本来就比鬼神更可怕。”</div>
+									<div class="num">2072<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="诡镇" target="_blank">诡镇</a></h3>
+							<p class="intro"><span>22.2万</span>︱<span>推理灵异</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191015/15-10-19093040-19783.jpg" alt="卫宫切嗣拒绝正义">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="" alt="">【吃瘪龙】</div>
+									<div class="desc">重生的卫宫切嗣只想拯救自己所爱的人，可世界却想要他拯救。</div>
+									<div class="num">888<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="卫宫切嗣拒绝正义" target="_blank">卫宫切嗣拒绝正义</a></h3>
+							<p class="intro"><span>13.0万</span>︱<span>动漫穿越</span></p>
+						</li>
+												<li>
+							<a class="img" href="#" target="_blank">
+								<img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191028/28-10-19122511-50969-100131071.jpg" alt="我的老婆是祖龙">
+								<div class="mask"></div>
+								<div class="info">
+									<div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img_item/img-2016-08/598754/avatar/thumb_9ffb7e0afb13de109106004264.png" alt="">【不做律师做法师】</div>
+									<div class="desc">从地球穿越到怪物猎人中变成弃婴的米哈维，从小胸前戴着一枚白色鳞片当做护身符。一个奇怪的梦总是困扰着米哈维，梦中的战场是在哪里？那里发生过什么？梦中的白衣少女米娜又是谁？胸前的护身符是她给的吗？她又在守护什么？天降的钢龙幼女尼娅又为何叫自己爸爸？书名《我只是一个路过的片手侠》又名《我的老婆是古龙》又名《为什么我的艾露猫不会变成女孩子》。这是一个穿越成弃婴的米哈维，逐步成长为优秀猎人的故事。“主人喵，艾露猫是不会变成女孩子的喵！”“我不管，快给我变！”新人新书已签约，求收藏，求推荐，给新人更多的更新动力。如果嫌弃字数少的话，也请不要取消收藏，可以试着养一养，拜托了。</div>
+									<div class="num">237<i></i></div>
+								</div>
+							</a>
+							<h3 class="title"><a href="#" title="我的老婆是祖龙" target="_blank">我的老婆是祖龙</a></h3>
+							<p class="intro"><span>4.1万</span>︱<span>游戏世界</span></p>
+						</li>
+												</ul>
+					</div>
+                                    				</div>
+            
+				<!--content-box 右侧 月票榜 start-->
+                        <div class="recommend-box ly-fr">
+                    <div class="title-box icon-book">
+                            <h3 class="title">月票榜</h3>
+                            <p class="sub-title">我要的次元</p>
+                            <a class="btn btn-more" href="#" target="_blank">更多 &gt;</a>
+                    </div>
+                    <ul>
+                                                    <li class="top1">
+                                <div class="info">
+                                  <i class="icon-top">NO.1</i>
+                                  <h3><a href="#" target="_blank" title="文明：超越两界">文明：超越两界</a></h3>
+                                  <p class="author"><a target="_blank" href="#">学霸殿下</a></p>
+                                  <p class="num"><span>8681</span></p>
+                                </div>
+                                <a class="img" href="#" title="文明：超越两界"><img class="lazyload" src="resources/images/transparent.png" data-original="uploads/allimg/c190311/11-03-19151904-92908-100098356.jpg" alt="文明：超越两界"></a>
+                              </li>
+                                                            <li class="top">
+                                  <a href="#" target="_blank" title="是明日方舟哒！">
+                                    <i class="icon-top">2</i><b>[动漫穿越]</b>是明日方舟哒！                                    <span class="num">2965</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="我终将成为正义的伙伴">
+                                    <i class="icon-top">3</i><b>[动漫穿越]</b>我终将成为正义的伙伴                                    <span class="num">2892</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="我终将踏上名为英雄的不归路">
+                                    <i class="icon-top">4</i><b>[动漫穿越]</b>我终将踏上名为英雄的不归路                                    <span class="num">2307</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="下作勇者">
+                                    <i class="icon-top">5</i><b>[游戏世界]</b>下作勇者                                    <span class="num">2229</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="最佳反派的奇妙之旅">
+                                    <i class="icon-top">6</i><b>[动漫穿越]</b>最佳反派的奇妙之旅                                    <span class="num">1895</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="无惨我老婆">
+                                    <i class="icon-top">7</i><b>[动漫穿越]</b>无惨我老婆                                    <span class="num">1841</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="遍地勇者的格林姆迦尔">
+                                    <i class="icon-top">8</i><b>[异界幻想]</b>遍地勇者的格林姆迦尔                                    <span class="num">1739</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="做动画死路一条！">
+                                    <i class="icon-top">9</i><b>[青春日常]</b>做动画死路一条！                                    <span class="num">1629</span>
+                                  </a>
+                                </li>
+                                                                <li>
+                                  <a href="#" target="_blank" title="女友全都是厉鬼">
+                                    <i class="icon-top">10</i><b>[超现实都市]</b>女友全都是厉鬼                                    <span class="num">1550</span>
+                                  </a>
+                                </li>
+                                                    </ul>
+            </div>
+                                        <!--书荒看这里 -->
+				<div class="banner banner-single">
+					<a href="#" target="_blank" title="SCP基金会及克苏鲁神话">
+						<img class="lazyload" src="resources/images/transparent.png" data-original="novel/img_index_recommend/booklist/20190617045201913.jpg" alt="">
+					</a>
+				</div>
+            			</div>
+        
+        <!--BOSS任性推 start-->            
+        <div class="content-box">
+                <div class="mod-box">
+                                            <div class="mod-tit">
+                            <h3 class="icon-boss">BOSS任性推荐<sub>万人在线抢着看</sub><a target="_blank" class="btn btn-more ly-fr" href="book_list.html">更多 &gt;</a></h3>
+                        </div>
+                        <ul class="book-list book-list-three">
+                                                            <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190505/05-05-19103743-42524-100103188.jpg" alt="身负一万种系统的我却不是主角">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="" alt="">【真·索系玩家】</div>
+                                                        <div class="desc">穿越之后，岳暽发现自己绑定了一万种不同的系统。最强剑士系统给了他随时随地使出四十米长剑罡的能力。最强苟命系统给了他天下之大，尽可去得的底气。最强修真者系统给了他比仙人还要雄浑的灵力。最强刺客系统给了他想进哪个门就进哪个门的随性。至于什么最强写手系统，最强催更系统，岳暽的系统真是五花八门。在利用这些系统天下无敌之后，岳暽突然接到一个新的任务。“杀死这个世界的主角”面对突如其来的变故，岳暽一脸懵逼。“我一个普通的穿越者，怎么就变成大BOSS了！？”本书共分前后两部分，前半部分是本书主角如何在世界范围内作死，后半部分才是化身BOSS。第六章开始就无敌了。（女主问题详见单章）求收藏求订阅，谢谢！</div>
+                                                        <div class="num">8905<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="身负一万种系统的我却不是主角" target="_blank">身负一万种系统的我却不是主角</a></h3>
+                                        <p class="intro"><span>266.4万</span>︱<span>异界幻想</span></p>
+                                </li>
+                                                                <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190919/19-09-19110809-98958.jpg" alt="关于我转生成虚拟美少女这件事">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="" alt="">【紫影】</div>
+                                                        <div class="desc">【日更万字直到完本，新人新书求收藏】身为DD的七叶知弦从来没有想过，自己居然也会有出道成为VTB的一天。而且。。。“布雷西亚学院是个什么鬼？学院长张京华，班长谢拉，班委月之美兔，同班同学全是VTB？”“等下！出道就算了，我虽然长的是可爱了点，但百分百是个男孩子啊！这立绘怎么比妹子还凶？？”“百合营业是不可能营业的，我就是饿死，死外面，也绝对不会雌堕的！”“什么！因为CP又涨粉了？阿夸夏哥小狐狸，快来贴贴！”总之，这是个充满桃子跟糖的欢乐日常故事。</div>
+                                                        <div class="num">2003<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="关于我转生成虚拟美少女这件事" target="_blank">关于我转生成虚拟美少女这件事</a></h3>
+                                        <p class="intro"><span>41.2万</span>︱<span>青春日常</span></p>
+                                </li>
+                                                                <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191101/01-11-19005659-87154.jpg" alt="日在新世界">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2016-03/19486/avatar/thumb_bbd5ea7ac9f67d5decaf5bfb52.jpg" alt="">【兵库北番长】</div>
+                                                        <div class="desc">（两本老书完本，节操信誉保证）会呼吸的异世界、超高自由度的划时代网游——《新世界》毫无征兆的宣布要结束删档测试。宁白看着辛辛苦苦才攻略到一半，已经对自己芳心暗许，马上就要到手的漂亮圣女，怒从心头起恶向胆边生。于是直接无视‘未达成任务条件’的鲜红提醒，强行进入攻略圣女的最终任务——生命大和谐。《新世界》中的每个任务都有不止一种完成方法，其中选择无视任务条件强行完成，往往会有非常严重的惩罚。“反正马上就关服删档了，有什么后果都无所谓。”准备提上裤子就跑的宁白，第二天睁开双眼发现自己穿越到了游戏世界。</div>
+                                                        <div class="num">6053<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="日在新世界" target="_blank">日在新世界</a></h3>
+                                        <p class="intro"><span>59.0万</span>︱<span>游戏世界</span></p>
+                                </li>
+                                                                <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c191101/01-11-19175456-89588-100132197.jpg" alt="型月娱乐圈">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img_item/img-2017-05/13114/avatar/thumb_7821b4da9ce3524f7f1b8a5997.png" alt="">【奇想】</div>
+                                                        <div class="desc">在型月世界最大的访谈节目，迦勒底电视台的《梅莉有约》上。面对主持人的询问。深陷绯闻的新生代偶像，影视歌三栖巨星，英灵娱乐公司ceo，卡美洛娱乐王朝二代目，票房百亿神话缔造者，拥有战斗力爆表的三百六十亿真爱粉亚瑟·潘德拉贡·诚奋力疾呼：我向大家保证。所有关于我的绯闻都是假的！我出道以来，一向洁身自好！一不艹粉！二不出轨！！三不潜规则！！！是娱乐圈儿最最纯洁的白莲花，大家一定要信我呀！</div>
+                                                        <div class="num">2061<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="型月娱乐圈" target="_blank">型月娱乐圈</a></h3>
+                                        <p class="intro"><span>21.8万</span>︱<span>动漫穿越</span></p>
+                                </li>
+                                                                <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190308/08-03-19164720-52107-100098312.jpg" alt="怪物猎人与怪物虐人">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="" alt="">【固有结界科学化】</div>
+                                                        <div class="desc">在这个被怪物支配的世界上，所有的怪物和狩猎怪物的猎人是存在一个隐形的等级的：其一，怪物猎人——百米高空无保护速降，脸接光炮脚踩岩浆，杀尽天下古龙，宰光世间变态。其二，怪物，猎人——开得猎弓，使得板斧，丢得爆桶玩得空袭，自由狩猎怪物的猎人其三，怪物，猎，人——纵使你灭灭大战骨锤，即便你太刀登龙斩，于我何加哉？不过一人一猫一信号弹。其四，怪物猎，人——傻狍子，快跑，你是猎物！最末，怪物虐人——..........，猛汉王，卸载！登顶食物链的制高点，“苍蓝的流星”张开双翼，六束汹涌的离子烈焰将细长而恐怖的阴影覆盖在这片新大陆之上，盘旋于龙结晶之地的最高端——天慧龙异变种·结晶龙！</div>
+                                                        <div class="num">23254<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="怪物猎人与怪物虐人" target="_blank">怪物猎人与怪物虐人</a></h3>
+                                        <p class="intro"><span>2,355.0万</span>︱<span>游戏世界</span></p>
+                                </li>
+                                                                <li>
+                                        <a class="img" href="#" target="_blank">
+                                                <img class="lazyload" src="resources/images/tmp/cover.jpg" data-original="uploads/allimg/c190205/05-02-19193416-26827-100077201.jpg" alt="诡境主宰">
+                                                <div class="mask"></div>
+                                                <div class="info">
+                                                        <div class="tit"><img class="lazyload" src="resources/images/avatar-default-m.png" data-original="novel/img-2018-09/111969/avatar/thumb_9069a79df94cbdc73ee73cc635.jpg" alt="">【咸鱼咸鱼仙】</div>
+                                                        <div class="desc">蒸汽朋克、魔法秘术、月份正神、诡境恩赐，这是新世界的关键词。时间已经匆匆来到了第十八纪元的末尾，岁月史诗翻到了最后一页。浓雾笼罩的天空下，穿越者睁开了迷茫的双眼。世界树尚且幼小，蒸汽工业根植于错综复杂的三大王国；双生恶魔来到人间，在阴影与低语声中，充满恶意的窥视着世界；不死人潜藏于都市，仰望灰雾笼罩的天空，叹息无辜者的枉命；真实的幻影端坐在帷幕之后，静待最终之日的来临；命运舞台之上，人影闪动，主演之位尚不可知；午夜的钟声敲响，猫咪窜上黑袍者的肩膀，前方，是未知的前路。（一天两更，一更2000，咸鱼出品，信誉保障。）（另：都市的标签乱选的，不要当真。）（再另：读者群已建：678195187）</div>
+                                                        <div class="num">33632<i></i></div>
+                                                </div>
+                                        </a>
+                                        <h3 class="title"><a href="#" title="诡境主宰" target="_blank">诡境主宰</a></h3>
+                                        <p class="intro"><span>2,532.3万</span>︱<span>异界幻想</span></p>
+                                </li>
+                                                        </ul>
+                                    </div>
+            <!--往期Boss推荐 start-->            
+                            <div class="recommend-box ly-fr">
+                        <div class="title-box icon-past">
+                                <h3 class="title">往期BOSS推荐</h3>
+                                <p class="sub-title">总裁的秘密书库</p>
+                                <!--<a class="btn btn-more" href="">更多 &gt;</a>-->
+                        </div>
+                        <ul class="recommend-list-three">
+                        <li class="top">
+                                <a href="#" target="_blank" title="今天也要去拯救世界呢">
+                                        <i class="icon-top">1</i><b>[动漫穿越]</b>今天也要去拯救世界呢                                        <span class="num">19.7万</span>
+                                </a>
+                        </li>
+                                                <li class="top">
+                            <a href="#" target="_blank" title="苍青学院的提督与舰娘们">
+                                <i class="icon-top icon-top2">2</i><b>[战争历史]</b>苍青学院的提督与舰娘们                                <span class="num">5.3万</span>
+                            </a>
+                        </li>
+                                                <li class="top">
+                            <a href="#" target="_blank" title="我老婆是女武神">
+                                <i class="icon-top icon-top3">3</i><b>[异界幻想]</b>我老婆是女武神                                <span class="num">1.5万</span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" target="_blank" title="穿越提督的舰娘寻回之旅">
+                                <i class="icon-top">4</i><b>[动漫穿越]</b>穿越提督的舰娘寻回之旅                                <span class="num">17.8万</span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" target="_blank" title="天国的仰望">
+                                <i class="icon-top">5</i><b>[异界幻想]</b>天国的仰望                                <span class="num">89.8万</span>
+                            </a>
+                        </li>
+                                                <li>
+                            <a href="#" target="_blank" title="漫威系统带我飞">
+                                <i class="icon-top">6</i><b>[超现实都市]</b>漫威系统带我飞                                <span class="num">7.1万</span>
+                            </a>
+                        </li>
+                                                </ul>
+                </div>
+                    </div>
+        <div class="content-box content-box-last">
+                <table class="book-list-table ly-fl">
+                        <tr>
+                                <th>[小说类别]</th>
+                                <th width="170px">小说书名</th>
+                                <th width="180px">最新章节</th>
+                                <th width="130px">作者名</th>
+                                <th width="90px">字数</th>
+                                <th>更新时间</th>
+                        </tr>
+
+                                                                                    <tr>
+                                    <td><p class="type">[超现实都市]</p></td>
+                                    <td><p class="name"><a href="#" target="_blank" title="我在东瀛开鬼屋">我在东瀛开鬼屋</a></p></td>
+                                    <td><p class="chapter"><a href="#" target="_blank" title="146">146</a><i class='icon-vip-s'></i></p></td>
+                                    <td><p class="author"><a href="#" target="_blank" title="要来点兔子吗？">要来点兔子吗？</a></p></td>
+                                    <td><p class="num">799807</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="#" target="_blank" title="主角你好，我是你哥">主角你好，我是你哥</a></p></td>
+                                    <td><p class="chapter"><a href="#" target="_blank" title="第三百五十八章 乒乓">第三百五十八章 乒乓</a><i class='icon-vip-s'></i></p></td>
+                                    <td><p class="author"><a href="#" target="_blank" title="挖坑埋自己">挖坑埋自己</a></p></td>
+                                    <td><p class="num">746618</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="#" target="_blank" title="怎么假装自己是鹿目圆？在线等，挺急的！">怎么假装自己是鹿目圆？在线等，挺急的！</a></p></td>
+                                    <td><p class="chapter"><a href="#" target="_blank" title="第7章 不走了">第7章 不走了</a></p></td>
+                                    <td><p class="author"><a href="#" target="_blank" title="西风小霸王">西风小霸王</a></p></td>
+                                    <td><p class="num">20657</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[战争历史]</p></td>
+                                    <td><p class="name"><a href="#" target="_blank" title="兔子的无限影视">兔子的无限影视</a></p></td>
+                                    <td><p class="chapter"><a href="#" target="_blank" title="第五章      发展">第五章      发展</a></p></td>
+                                    <td><p class="author"><a href="#" target="_blank" title="饕餮熊猫">饕餮熊猫</a></p></td>
+                                    <td><p class="num">172072</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[游戏世界]</p></td>
+                                    <td><p class="name"><a href="book/100116195.html" target="_blank" title="明日曙光">明日曙光</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104043676.html" target="_blank" title="NO.33:见面礼可不好展示。">NO.33:见面礼可不好展示。</a><i class='icon-vip-s'></i></p></td>
+                                    <td><p class="author"><a href="reader/55891.html" target="_blank" title="正义的太阳骑士黑王殿">正义的太阳骑士黑王殿</a></p></td>
+                                    <td><p class="num">490218</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="book/100077136.html" target="_blank" title="逆回十六夜的综漫之旅">逆回十六夜的综漫之旅</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104031658.html" target="_blank" title="第八章猎肠者">第八章猎肠者</a><i class='icon-vip-s'></i></p></td>
+                                    <td><p class="author"><a href="reader/1837756.html" target="_blank" title="天堂使徒">天堂使徒</a></p></td>
+                                    <td><p class="num">2179600</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="book/100085443.html" target="_blank" title="数码之异次元的神魔">数码之异次元的神魔</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044299.html" target="_blank" title="第八章 冲了">第八章 冲了</a></p></td>
+                                    <td><p class="author"><a href="reader/161843.html" target="_blank" title="鸦酱">鸦酱</a></p></td>
+                                    <td><p class="num">25098</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="book/100129177.html" target="_blank" title="群星与综漫">群星与综漫</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044298.html" target="_blank" title="第四十六章   和它谈谈">第四十六章   和它谈谈</a></p></td>
+                                    <td><p class="author"><a href="reader/6386201.html" target="_blank" title="IlIlIl">IlIlIl</a></p></td>
+                                    <td><p class="num">94223</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[同人]</p></td>
+                                    <td><p class="name"><a href="book/100078552.html" target="_blank" title="暗黑kiva的FGO">暗黑kiva的FGO</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044297.html" target="_blank" title="52 魔神柱再现，正义的群殴">52 魔神柱再现，正义的群殴</a></p></td>
+                                    <td><p class="author"><a href="reader/2812694.html" target="_blank" title="Agito">Agito</a></p></td>
+                                    <td><p class="num">292104</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[同人]</p></td>
+                                    <td><p class="name"><a href="book/100105992.html" target="_blank" title="综漫之大梦歌">综漫之大梦歌</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044296.html" target="_blank" title="第76章 故人叹（6）">第76章 故人叹（6）</a></p></td>
+                                    <td><p class="author"><a href="reader/772142.html" target="_blank" title="自嗨派单机道人">自嗨派单机道人</a></p></td>
+                                    <td><p class="num">552737</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[同人]</p></td>
+                                    <td><p class="name"><a href="book/100132980.html" target="_blank" title="我的复制原画怎么会出问题">我的复制原画怎么会出问题</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044295.html" target="_blank" title="第十二章：冰">第十二章：冰</a></p></td>
+                                    <td><p class="author"><a href="reader/2595369.html" target="_blank" title="system">system</a></p></td>
+                                    <td><p class="num">34245</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[青春日常]</p></td>
+                                    <td><p class="name"><a href="book/100126902.html" target="_blank" title="我，有趣的女人！">我，有趣的女人！</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044293.html" target="_blank" title="第三十四章   平丸一也的告白（二）">第三十四章   平丸一也的告白（二）</a><i class='icon-vip-s'></i></p></td>
+                                    <td><p class="author"><a href="reader/6279646.html" target="_blank" title="吹落的树叶">吹落的树叶</a></p></td>
+                                    <td><p class="num">220718</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="book/100108780.html" target="_blank" title="终焉之下">终焉之下</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044289.html" target="_blank" title="虽然不想承认，但我写小说给老师发现了，">虽然不想承认，但我写小说给老师发现了，</a></p></td>
+                                    <td><p class="author"><a href="reader/2041337.html" target="_blank" title="终焉之下">终焉之下</a></p></td>
+                                    <td><p class="num">77000</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[青春日常]</p></td>
+                                    <td><p class="name"><a href="book/100132999.html" target="_blank" title="猫男犬女谈恋爱真难">猫男犬女谈恋爱真难</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044288.html" target="_blank" title="第十九章：夏季漫展的规划">第十九章：夏季漫展的规划</a></p></td>
+                                    <td><p class="author"><a href="reader/3689086.html" target="_blank" title="许氏子谦">许氏子谦</a></p></td>
+                                    <td><p class="num">47362</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                            <tr>
+                                    <td><p class="type">[动漫穿越]</p></td>
+                                    <td><p class="name"><a href="book/100133358.html" target="_blank" title="幼年企业想成为最强航母">幼年企业想成为最强航母</a></p></td>
+                                    <td><p class="chapter"><a href="chapter/104044095.html" target="_blank" title="014.神秘的企业小姐">014.神秘的企业小姐</a></p></td>
+                                    <td><p class="author"><a href="reader/6541477.html" target="_blank" title="嘟噜">嘟噜</a></p></td>
+                                    <td><p class="num">32497</p></td>
+                                    <td><p class="date">2019-11-09</p></td>
+                                </tr>
+                                                    
+                </table>
+                                <div class="recommend-box-cover ly-fr">
+                        <div class="title-box icon-cat">
+                                <h3 class="title">新书榜</h3>
+                                <p class="sub-title">我要的次元</p>
+                                <a class="btn btn-more" href="rank-index/yp_new.html" target="_blank">更多 &gt;</a>
+                        </div>
+                        <ul>
+                                                            <li>
+                                        <a class="img" href="book/100126337.html"><img class="lazyload" src="resources/images/transparent.png" data-original="uploads/allimg/c190913/13-09-19201420-55560-100126337.jpg" alt="我终将成为正义的伙伴"></a>
+                                        <div class="info">
+                                                <h3 class="tit"><a href="book/100126337.html" title="我终将成为正义的伙伴" target="_blank">我终将成为正义的伙伴</a></h3>
+                                                <p class="author"><a target="_blank" href="reader/5988024.html">只讲故事的小号</a></p>
+                                                <p class="desc">第一百一十九章 我们可是自己人！【第三更】</p>
+                                                                                                <p class="tips">日更：11千+</p>
+                                                                                        </div>
+                                </li>
+                                                            <li>
+                                        <a class="img" href="book/100130731.html"><img class="lazyload" src="resources/images/transparent.png" data-original="uploads/allimg/c191015/15-10-19140836-83963.jpg" alt="无惨我老婆"></a>
+                                        <div class="info">
+                                                <h3 class="tit"><a href="book/100130731.html" title="无惨我老婆" target="_blank">无惨我老婆</a></h3>
+                                                <p class="author"><a target="_blank" href="reader/2259322.html">老狗</a></p>
+                                                <p class="desc">第五十章 禁止冲突！</p>
+                                                                                                <p class="tips">日更：4千+</p>
+                                                                                        </div>
+                                </li>
+                                                            <li>
+                                        <a class="img" href="book/100128599.html"><img class="lazyload" src="resources/images/transparent.png" data-original="uploads/allimg/c190930/30-09-19002327-68518-100128599.jpg" alt="遍地勇者的格林姆迦尔"></a>
+                                        <div class="info">
+                                                <h3 class="tit"><a href="book/100128599.html" title="遍地勇者的格林姆迦尔" target="_blank">遍地勇者的格林姆迦尔</a></h3>
+                                                <p class="author"><a target="_blank" href="reader/6350744.html">VKey</a></p>
+                                                <p class="desc">第一百一十二章 猎人与猎物</p>
+                                                                                                <p class="tips">日更：11千+</p>
+                                                                                        </div>
+                                </li>
+                                                            <li>
+                                        <a class="img" href="book/100128633.html"><img class="lazyload" src="resources/images/transparent.png" data-original="uploads/allimg/c191008/08-10-19120028-7569-100128633.jpg" alt="做动画死路一条！"></a>
+                                        <div class="info">
+                                                <h3 class="tit"><a href="book/100128633.html" title="做动画死路一条！" target="_blank">做动画死路一条！</a></h3>
+                                                <p class="author"><a target="_blank" href="reader/3062178.html">老坛里面没有酸菜</a></p>
+                                                <p class="desc">089 我的《轻音少女》就不上架了！（3更）</p>
+                                                                                                <p class="tips">日更：8千+</p>
+                                                                                        </div>
+                                </li>
+                                                    </ul>
+                </div>
+                        </div>
+        <div class="go-top" id="J_GoTop">
+                <a href="javascript:;">返回顶部</a>
+        </div>
+    </div>
+</div>
+<!--container end-->
+<div class="sidebar" id="J_AppDownloadSite">
+
+
+</div>
+
+<div class="footer">
+    <div class="ly-wrap">
+        <ul class="ly-fl about-us">
+            <li>
+                <dl>
+                    <dt><a href="">首页</a></dt>
+                    <dd><a target="_blank" href="index/sitemap.html">网站地图</a></dd>
+                    <dd><a target="_blank" href="index/about-us.html" rel="nofollow">关于刺猬猫</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>联系与合作</dt>
+                    <dd><a target="_blank" href="index/contact-us.html" rel="nofollow">联系我们</a></dd>
+                    <dd><a target="_blank" href="index/join-us.html" rel="nofollow">加入我们</a></dd>
+                    <!-- <dd><a target="_blank" href="">帮助中心</a></dd> -->
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>移动客户端</dt>
+                    <dd><a target="_blank" href="index/app/iphone.html" rel="nofollow">刺猬猫 iPhone 版</a></dd>
+                    <dd><a target="_blank" href="index/app/android.html" rel="nofollow">刺猬猫 Android 版</a></dd>
+                    <dd><a target="_blank" href="index/app/ipad.html" rel="nofollow">刺猬猫 iPad 版</a></dd>
+                </dl>
+            </li>
+<!--             <li>
+                <dl>
+                    <dt>安全认证</dt>
+                    <dd><a logo_size="83x30" logo_type="realname" href="http://www.anquan.org" ><script src="static/outer/js/aq_auth.js"></script></a></dd>
+                </dl>
+            </li> -->
+        </ul>
+		<div class="follow-us Reporting ly-fr">
+			<div class="hd">举报中心</div>
+			<div class="bd" id="">
+				<a class="J_footReport" href="javascript:;">我要举报</a>
+			</div>
+		</div>
+        <div class="ly-fr follow-us">
+            <div class="hd">关注我们</div>
+            <div class="bd" id="J_QrCodeWx">
+                小说资源互助群：274536193<br>
+                刺猬猫问题反馈群：436473245<br>
+                刺猬猫官方微信：<i><b></b></i>
+            </div>
+        </div>
+    </div>
+	<div class="copyright">
+		Copyright &copy; 2015 Hangzhou Fantasy Technology NetworkCo.,Ltd.
+	</div>
+	<div class="record">
+		<a target="_blank" style="margin-left: 10px">杭州狂想网络科技有限公司&nbsp&nbsp</a>
+		<img src="resources/images/record.png" style="position: relative;top: 4px;">
+		<a target="_blank" href="javascript:;">浙公网安备 33010802009271号</a>
+		<a target="_blank" href="javascript:;" style="margin-left: 10px">浙ICP备14025736号-3</a><a target="_blank" style="margin-left: 10px">浙网文[2018]3439-247</a>
+		<p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何内容违法的小说，一经发现，即作删除！</p>
+		<p>本站所收录作品、社区话题、书库评论及本站所做之广告均属个人行为，与本站立场无关</p>
+	</div>
+</div>
+
+<!-- 用户操作 -->
+<div id="J_TuiJianBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+</div>
+<div class="line">
+    <p>您的推荐票余量:<br>
+        <b class="J_Recommend">0</b></p>
+</div>
+<div class="line-amount">
+	<span>打赏数量</span>
+	<a class="no-minus J_noMinus" href="javascript:;">-</a>
+	<input type="text" value="0" class="text-amount J_NumResult">
+	<a class="no-plus J_noPlus" href="javascript:;">+</a>
+</div>
+<div class="form-btn">
+	<a class="btn btn-default" href="recharge/index.html" target="_blank">充值中心</a>
+	<a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投推荐票</a>
+</div>
+</div>
+</div>
+<div id="J_YuePiaoBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+        </div>
+        <div class="line">
+            <p>您的月票余量:<br>
+                <b class="J_Stock">0</b></p>
+        </div>
+        <div class="line-amount">
+			<span>打赏数量</span>
+			<a class="no-minus J_noMinus" href="javascript:;">-</a>
+                        <input type="text" value="0" class="text-amount J_NumResult">
+			<a class="no-plus J_noPlus" href="javascript:;">+</a>
+		</div>
+		<div class="form-btn">
+			<a class="btn btn-default" href="recharge/index.html" target="_blank">充值中心</a>
+			<a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投月票</a>
+		</div>
+    </div>
+</div>
+<div id="J_DingYueBox" style="display:none">
+    <div class="account-info dingyue-box">
+        <div class="line">
+            <p>
+                您的余额:<br><b class="J_HLB">0</b> 币
+            </p>
+        </div>
+        <div class="line">
+            <ul class="input-radio J_InputRadio">
+                                <li>
+                    <a href="javascript:;" class="selected"> <i class="icon-select"></i><span class="heavy-font">全本购买</span>                        <input type="radio" class="J_NumResult" value="1" style="display:none" checked="checked">
+                    </a>
+                    <div class="item-desc">需购章节： 章，<br>
+                    	
+                   		 应付总额： 币<br>
+                                                                 </div>
+                </li>
+            </ul>
+            <!--新增  复选框 start-->
+                        <!--新增  复选框 end-->
+            <div class="item-desc dy-desc">
+				1、全本订阅是订阅目前已更新的全部章节，如期间有免费章节和已购买章节，下载时将一并下载。<br>
+				2、免费章节及已购买章节不会重复扣费，请放心购买。
+			</div>
+        </div>
+        <div class="form-btn">
+        	<a class="btn btn-default" href="recharge/index.html" target="_blank">充值中心</a>
+                            <a href="javascript:;" class="J_BoxSubmit btn btn-warning ly-fr" disabled="true">无需订阅</a>
+                        
+        </div>
+    </div>
+</div>
+<div id="J_DaShangBox" style="display:none">
+    <div class="account-type">
+        <ol class="input-radio J_InputRadio">
+            <li><a href="javascript:;" class="selected" data-type="shang">打赏</a></li>
+            <li><a href="javascript:;" data-type="prop">道具</a></li>
+        </ol>
+    </div>
+    <!-- <div class="account-info account-shang account-shang-planb J_AccountShang">-->
+        <div class="account-info account-shang J_AccountShang account-shang-planb">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+        </div>
+        <div class="line line-pd0">
+            <ul class="input-radio J_InputRadio clearfix">
+                <li>
+                    <a href="javascript:;" class="selected" data-prop-type="37"><span></span>
+                        <input type="radio" class="J_NumResult" value="100" checked="checked">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-prop-type="38"><span></span>
+                        <input type="radio" class="J_NumResult" value="588">
+                    </a>
+                </li>
+                <li>
+                    <a class="bdright" href="javascript:;" data-prop-type="39"><span></span>
+                        <input type="radio" class="J_NumResult" value="1688">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="40"><span></span>
+                        <input type="radio" class="J_NumResult" value="5000">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="41"><span></span>
+                        <input type="radio" class="J_NumResult" value="10000" style="display:none">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom bdright" href="javascript:;" data-prop-type="42"><span></span>
+                        <input type="radio" class="J_NumResult" value="100000" style="display:none">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="line-amount J_NumCalculate">
+                <span>打赏数量</span>
+                <a href="javascript:;" class="no-minus J_noMinus">-</a>
+                <input type="text" value="1" class="text-amount J_NumResult" maxlength="10">
+                <a href="javascript:;" class="no-plus J_noPlus">+</a>
+        </div>
+		<div class="form-btn">
+			<a class="btn btn-default" href="recharge/index.html" target="_blank">充值中心</a>
+			<a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">立即打赏</a>
+		</div>
+    </div>
+    <div class="account-info account-prop J_AccountProp" style="display: none;">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b>
+            </p>
+        </div>
+        <div class="line blade-box">
+            <div class="blade ly-fl"></div>
+            <div class="blade-info">
+                <h3 class="title">催更刀片</h3>
+                <p>想要加快更新速度？试试给作者寄刀片吧！</p>
+                <p>单价 <span class="J_BladePrice">100</span> 猫饼干</p>
+                <p class="own-blade">拥有 <i class="J_OwnBlade">0</i> 个</p>
+                <div class="blade-amount J_BladeAmount">
+                    <a href="javascript:;" class="no-minus J_noMinus">-</a>
+                    <input type="text" value="0" class="text-amount J_NumResult" maxlength="10">
+                    <a href="javascript:;" class="no-plus J_noPlus">+</a>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <p>需购道具&nbsp;&nbsp;<span class="heavy-font">催更刀片 x <i class="J_BladeNum">1</i></span></p>
+	    <p>应付总额&nbsp;&nbsp;<b class="heavy-font"><b class="J_Consume">100</b> 猫饼干</b></p>
+        </div>
+		<div class="form-btn">
+			<a class="btn btn-default" href="recharge/index.html" target="_blank">充值中心</a>
+			<a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投出道具</a>
+		</div>
+    </div>
+</div>
+
+<!-- 登录框 -->
+<div id="J_LoginBox" style="display:none">
+	<div class="login-box">
+		<form action="https://www.ciweimao.com/signup/doLoginBox" class="form-box" id="J_LoginForm" name="J_LoginForm" method="post" onsubmit="doLoginBox();return false;">
+		  <div class="input-group">
+			<input type="text" class="username" name="username" placeholder="手机号/邮箱">
+		  </div>
+		  <div class="input-group">
+			<input type="password" class="password" name="password" placeholder="密码">
+		  </div>
+		  <div class="input-group code-group">
+								<div id="embed-geetest-captcha"></div>
+					<p id="geetest-wait">正在加载验证码......</p>
+					<p id="geetest-notice">请先通过验证</p>
+					<script>
+						HB.util.loadGeetest = function () {
+							if (window.geetestCaptchaObj) {
+								return;
+							}
+							var head = document.getElementsByTagName("head")[0];
+							var s = document.createElement("script");
+							s.src = "https://www.ciweimao.com/resources/js/gt3.0.js";
+							head.appendChild(s);
+
+							s.onload = s.onreadystatechange = function() {
+								if (!this.readyState || 'loaded' === this.readyState || 'complete' === this.readyState) {
+									$("#geetest-notice").hide();
+									var handlerEmbed = function (captchaObj) {
+										$("#dosubmmit").click(function (e) {
+											var validate = captchaObj.getValidate();
+											if (!validate) {
+												$("#geetest-notice").show();
+												setTimeout(function () {
+													$("#geetest-notice").hide();
+												}, 2000);
+												e.preventDefault();
+											}
+										});
+										captchaObj.appendTo("#embed-geetest-captcha");
+										captchaObj.onReady(function () {
+											$("#geetest-wait").hide();
+										});
+										window.geetestCaptchaObj = captchaObj;
+									};
+									$.ajax({
+										// 获取id，challenge，success（是否启用failback）
+										url: "https://www.ciweimao.com/signup/geetest_captcha?t=" + (new Date()).getTime(), // 加随机数防止缓存
+										type: "get",
+										dataType: "json",
+										success: function (data) {
+											// 使用initGeetest接口
+											// 参数1：配置参数
+											// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+											initGeetest({
+												gt: data.gt,
+												challenge: data.challenge,
+												product: "float", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+												offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+												width:"100%"// 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+											}, handlerEmbed);
+										}
+									});
+								}
+							};
+						};
+					</script>
+						  </div>
+		  <div class="btn-group">
+			<button type="submit" class="btn btn-warning" name="dosubmmit" id="dosubmmit">登录</button>
+		  </div>
+			<div class="form-ft clearfix">
+			<span class="tl">
+				<label><input type="checkbox" name="autoLogin">自动登录</label>
+			</span>
+			<span class="tr">
+				<a href="signup/modify_passwd_page-httpswww.ciwe.html">忘记密码&nbsp;&nbsp;|&nbsp;</a>
+				<a href="signup/register-httpswww.ciweimao.com.html">注册</a>
+			</span>
+			</div>
+		</form>
+		<div class="login-ft">
+			<div class="otherUser">
+				<div class="otherUser_T">使用第三方账号登录</div>
+				<div class="otherUser_B">
+					<a href="signup/qqlogin-https3a2f2fwww.ciweimao..html" class="qqLogin"></a>
+					<!-- <a href="javascript:;" class="wbLogin"></a> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src='resources/js/jquery-plugins/jquery.validate/jquery.validate.min.js'></script>
+<script type="text/javascript" src="resources/js/dialog-form-2.js"></script>
+<script type="text/javascript" src="resources/js/artDialog/6.0.4/dialog-min.js"></script>
+<script type="text/javascript">
+    function doLoginBox(){
+        var self = $(this);
+        var username = $("input[name='username']").val();
+        var password = $("input[name='password']").val();
+        
+        var autoLogin=$("input[name='autoLogin']:checked").val();
+		
+		var post_data = {};
+		if(window.geetestCaptchaObj) {
+			var validate = window.geetestCaptchaObj.getValidate();
+			if (!validate) {
+				$("#geetest-notice").show();
+				setTimeout(function () {
+					$("#geetest-notice").hide();
+				}, 2000);
+				return;
+			}
+			post_data = {username: username, password: password, autoLogin:autoLogin};
+			var validateDict = window.geetestCaptchaObj.getValidate();
+			for(var key in validateDict) {
+				post_data[key] = validateDict[key];
+			}
+		} else {
+			var code = $("input[name='code']").val();
+			if(code==''){
+				HB.util.alert("请输入验证码!");
+				return;
+			}
+			post_data = {username: username, password: password, code: code,autoLogin:autoLogin};
+		}
+
+        var dosubmmit = $("#dosubmmit");
+        if(dosubmmit.prop('disabled')) return false;
+
+        $.ajax({
+            url: HB.config.rootPath + 'signup/doLoginBox',
+            data: post_data,
+            beforeSubmit: function() {
+                dosubmmit.prop("disabled", true);
+            },
+            complete: function () {
+                dosubmmit.prop("disabled", false);
+            },
+            success: function (res) {
+                if (res.code == 100000) {
+                    var msg = res.tip ? res.tip : '登录成功！';
+                    HB.util.alert(msg);
+                    //$("#J_LoginBox").attr('style','display:none');
+                    window.location.reload();
+                } else {
+                    HB.util.alert(res.tip,1);
+                    $("#code").trigger('click');
+                    if(window.geetestCaptchaObj) {
+						window.geetestCaptchaObj.reset();
+					}
+                }
+            }
+        });
+    }
+</script><div style="display: none">
+    <script type="text/javascript">
+		var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1276028418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1276028418' type='text/javascript'%3E%3C/script%3E"));
+		
+		//页脚举报
+    $(".J_footReport").click(function() {
+        if (HB.userinfo.reader_id) {
+            var content = '<ul class="J_InputRadio input-radio">' +
+                '<li>' +
+                '<a href="javascript:;" class="selected">' +
+                '<div class="ly-fl radio">' +
+                '<i class="icon-select"></i>' +
+                '<input type="radio" class="J_NumResult hide" name="inform_type" value="1">' +
+                '</div>' +
+                '<div class="item">' +
+                '<h3 class="tit">发布不正当内容</h3>' +
+                '<p class="tips">当前页存在色情、暴力、恐怖、广告、违法等低俗不正当内容</p>' +
+                '</div>' +
+                '</a>' +
+                '</li>' +
+                '<input class="J_footReport_CommentInput" style="\n' +
+                '    width: 351px;\n' +
+                '    height: 40px;\n' +
+                '    margin-left: 28px;\n' +
+                '    background: #EAEAEA;\n' +
+                '    border-radius: 6px;\n' +
+                '    border: none;\n' +
+                '    padding-left: 16px;\n' +
+                '" placeholder="我来说两句......">' +
+                '</ul>';
+				
+			var d = dialog({
+                title:'我要举报',
+                fixed: true,
+                skin: "dialog-box dialog-report",
+                content: content,
+                button: [
+                    {
+                        value: '提交',
+                        callback: function () {
+                            submit_informant_footreport();
+                        },
+                        autofocus: true
+                    }
+                ]
+            });
+			d.showModal();
+		 } else {
+			 HB.util.loginDialog();
+		 }
+    });
+	
+	function submit_informant_footreport() {
+        var csrf_token = HB.util.Cookie.get('login_token');
+		var cnt =  $('.J_footReport_CommentInput').val();
+        $.ajax({
+            url: HB.config.rootPath + 'reader/inform_url',
+            data: {
+				content:cnt,
+                csrf_token:csrf_token,
+            },
+            success: function (res) {
+                if (res.code == 100000) {
+                    HB.util.alert(res.tip,1);
+                }
+                else {
+                    HB.util.alert(res.tip,1);
+                }
+            }
+        });
+    }
+	</script>
+</div>
+</body>
+</html>

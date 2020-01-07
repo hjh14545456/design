@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="nav-top" th:fragment="header">
+    <div class="ly-wrap">
+        <a class="logo" href="" title="畢業設計"></a>
+        <ul class="login-info ly-fr">
+            <li><a th:href="@{login}" rel="nofollow">登录</a></li>
+            <li class="line">|</li>
+            <li><a th:href="@{register}" rel="nofollow">注册</a></li>
+        </ul>
+        <form class="search-form" th:action="@{selectbook}" name="" method="get">
+            <div class="input-group">
+                <input name="keyword" autocomplete='off' type="text" placeholder="搜索更多作品或作者" >
+                <!--      autocomplete="off" x-webkit-speech="" data-type="1" x-webkit-grammar="builtin:translate" placeholder="搜索更多作品或作者"        data-url="https://www.ciweimao.com/get-search-book-list/0-0-0-0-0-0/全部/{key}"-->
+                <button type="submit"></button>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

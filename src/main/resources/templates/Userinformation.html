@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> 基本资料 - 刺猬猫</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link rel="shortcut icon" type="image/x-icon" href=""/>
+    <link rel="shortcut icon" href="https://www.ciweimao.com/resources/image/icon/CiWeiMao_Icon_32_R.png">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <!--<link rel="stylesheet" type="text/css" href=''/>-->
+
+    <!--<script type="text/javascript" language="javascript" src=''></script>-->
+    <script type="text/javascript" language="javascript" th:src="@{/scripts/bootstrap/js/jquery.js}"></script>
+
+    <script type="text/javascript">
+        var HB = HB || {};
+        HB.config = {jsPath:'https://www.ciweimao.com/resources/js', rootPath:'https://www.ciweimao.com/'};
+        HB.book = {book_id: "", chapter_id: "", up_reader_id: ""};
+        HB.userinfo = {reader_id: 0,tel_num: '',license: '',redis_license: '', reader_name: '""', avatar_thumb_url: '""', vip_lv: ""};
+        HB.urlinfo ={redirect:'https://www.ciweimao.com/reader/modify_mobile?redirect=https%3A%2F%2Fwww.ciweimao.com%2Freader%2Fmy_info'};
+    </script>
+    <script type="text/javascript" th:src="@{/js/base.js}"></script>
+    <script type="text/javascript" th:src="@{/js/artDialog/6.0.4/dialog-min.js}"></script>
+    <link rel="stylesheet" th:href="@{/js/bootstrap.datetimepicker/bootstrap-datetimepicker.min.css}"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1dbadbc80ffab52435c688db7b756e3a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    function initResponse(){var d,b,a=window.innerWidth||document.documentElement.clientWidth,g=navigator.userAgent.toLowerCase(),h=/(msie) ([\w.]+)/,f=h.exec(g),c;if(f!==null&&f[1]==="msie"){c=f[2];if(c==="8.0"||c==="7.0"||c==="6.0"){a=a+21}}document.body.style.width="";var e=(document.body.className&&document.body.className.indexOf("sw-list-")!=-1);if(a>=1280||e){d=1}else{d=0}switch(d){case 1:b="s-layout-1190";break;case 0:b="s-layout-990";break;default:b="s-layout-990";break}document.body.className=b}initResponse();
+</script>
+
+<!-- 当前是章节阅读页 -->
+
+
+<!--  欢迎每日登录 领取推荐票 -->
+<div class="dialogLoginBox" id="J_DialogLoginBox" style="display: none;">
+    <h1>欢迎每日登录</h1>
+    <div class="bd">
+        <p>  你好~~</p>
+        <p>送你 <b>
+            0		</b> 张推荐票哦~</p>
+        <p class="tips">登陆刺猬猫APP，<br/>完成每日签到任务，<br/>更有好礼相送。</p>
+    </div>
+    <div class="ft">
+        <!--        <a class="btn-gettuijian" href="javascript:;" id="J_GetTJTicket">领取推荐票</a>-->
+        <p class="auto-close"><i id="J_Timer">3</i>s后关闭</p>
+    </div>
+</div>
+
+<div class="nav-top">
+    <div class="ly-wrap">
+        <a class="logo" href="https://www.ciweimao.com/" title="刺猬猫"></a>
+        <ul class="login-info ly-fr">
+            <li class="userinfo">
+                <ul class="special clearfix">
+                    <li class="recharge"><a href="#"><i></i>充值中心</a></li>
+                    <li class="author"><a href="#" target="_blank"><i></i>作者后台</a></li>
+                </ul>
+
+                <a class="count" href="#" target="_blank" rel="nofollow">46</a>
+                <a class="msg" href="#" target="_blank" rel="nofollow">0</a>
+            </li>
+        </ul>
+        <form class="search-form" th:action="@{selectbook}" name="" method="get">
+            <div class="input-group">
+                <input name="keyword" autocomplete='off' type="text" placeholder="搜索更多作品或作者" >
+
+                <button type="submit"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="header-homepage">
+    <div class="ly-wrap per-info">
+        <div class="info-box">
+            <h3 class="J_Nickname" th:text="${session.logininfo.getUsername()}">什么都不彻底</h3>
+            <p><i class="icon-level-p"></i> LV.9世外高人</p>
+            <a class="btn btn-md btn-warning" href="#">充值</a>
+            <a class="btn btn-md btn-default" th:href="@{loginout}">退出</a>
+        </div>
+        <ul class="clearfix">
+            <li>书架 <b id="J_BookAmount"></b></li>
+            <li>足迹 <b>118</b></li>
+            <li>粉丝 <b>43</b></li>
+            <li>关注 <b>3</b></li>
+        </ul>
+        <div class="avatar-area">
+            <div class="avatar J_ChangeAvater">
+                <img class="lazyload" id="userAvatar" data-original="https://avatar.kuangxiangit.com/novel/img-2019-08/5388319/avatar/thumb_ac2c28c10bb9b272c7ef9b9ef978742f.jpg" src="https://www.ciweimao.com/resources/images/avatar-default-m.png" alt="">
+                <span class='medal medal_59_150'></span>                <div class="change-avatar">
+                <div class="J_ChangeAvaterA private_name_imgXg">更换</div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 修改头像 -->
+<div id="MsgMain" style="display:none">
+    <script type="text/javascript" th:src="@{/js/uploadPreview.js}"></script>
+    <script type="text/javascript">
+        //   当前需要修改的图片地址
+        var strUrl='';
+        //   图片裁剪结果提交的地址 (新建作品时，地址为空)
+        var strUploadUrl='https://www.ciweimao.com/reader/ajaxUploadAvatar';
+        //  图片域名
+        //var showUrl = 'http://a.8kana.com';
+
+        $("#MainContainer").ready(function(){
+            if ( (strUrl =='') || (strUrl=='http://a.8kana.com/big_headman_default.png') ){
+                $('.headBox_R').hide();
+            } else {
+                $("#currentImg").attr('src',strUrl);
+            }
+        });
+
+        //图片路径，420 等宽比
+        // showCrop('http://comm.8kana.com/temp/20160113101933_CJ4dYi_s.jpg', 420, 351)
+        // showCrop('http://comm.8kana.com/temp/20160113031605_JNkPAk_s.jpg',168,420)
+        //  显示裁剪窗口
+        function showCrop(strFile,boxWidth,boxHeight) {
+            $("#head").hide();
+            $("#head1").show();
+            $('#file_txt').val(strFile);
+
+            $("#img_1").attr('src',strFile).css({'width':boxWidth,'height':boxHeight });
+            //$("#img_2").attr({'src':strFile,'width':boxWidth,'height':boxHeight });
+            $("#img_b").css({'width':boxWidth,'height':boxHeight });
+            $("#img_a").css({'width':boxWidth,'height':boxHeight });
+
+            $("#img_b1").css({width:boxWidth,height:(boxHeight/3) });
+            $("#img_b2").css({'width':boxWidth/3,'height':boxHeight/3});
+            //裁剪框宽高
+            if(boxWidth>boxHeight){
+                if(boxHeight/3<110)
+                    b3H = 110;
+                else
+                    b3H=boxHeight/3;
+                $("#img_b3").css({'width':b3H, 'height':b3H});
+
+                $("#img_dsf").css({'left':b3H-10,'top':b3H-10});
+            }else{
+                if(boxWidth/3<110)
+                    b3W = 110;
+                else
+                    b3W=boxWidth/3;
+                $("#img_b3").css({'width':b3W, 'height':b3W});
+                $("#img_dsf").css({'left':b3W-10, 'top':b3W-10});
+            }
+
+            $("#img_b4").css({width:boxWidth/3, height:boxHeight/3, top:boxHeight/3});
+            $("#img_b5").css({width:boxWidth, height:(boxHeight/3)});
+
+            $("#img_b3").css({'top':boxHeight/3, 'left':boxWidth/3});
+
+            //            if(boxHeight > boxWidth){
+            //                var newWidth = parseFloat($(".img_c_1").css("height")) * parseFloat(boxWidth) / parseFloat(boxHeight);
+            //                $(".img_c_1").css("width",newWidth);
+            //            } else if(boxHeight < boxWidth){
+            //                var newHeight = parseFloat($(".img_c_1").css("width")) * parseFloat(boxHeight) / parseFloat(boxWidth);
+            //                $(".img_c_1").css("height",newHeight);
+            //            }
+            //$('#img_1') 右侧图片
+            Img.CropImg($('#img_1') ,'CropContainer');
+        }
+
+        //  重新选择文件
+        function showSelectForm(){
+            $("#head").show();
+            $("#head1").hide();
+//
+//                var strHtml = '<a class="headBox_L_newshead" href="javascript:;" style="overflow: hidden;">'+
+//                    '<i></i>'+
+//                '</a>'+
+//                '<form name="uploadFrom" id="uploadFrom" action="/home/ajax/ajaxUploadTempPic" method="post"  target="tarframe" enctype="multipart/form-data" style="position: absolute; top:-1px;left:200px;" >'+
+//                    '<input type="file" id="file1" name="avatar" onchange="javascript:uploadPic()" style="display: block; width:103px;height: 104px;opacity:0; filter:alpha(opacity=0);" />'+
+//                '</form>'+
+//                '<p>图片文件最大1M,支持jpg的图片格式</p>'+
+//                '<input type="button" class="headBox_L_newshead_Btn" value="点击选中图片" style="margin-top: 20px;"/>';
+//
+//                $(".headBox_L_newshead_Box").html(strHtml);
+            $("#loading").hide();
+            $("#uploadPic_wrap").show();
+
+        }
+
+        //        type: 1: 刷新当前窗口（修改图片时）  2：将裁剪好的图片传给父窗口（新增记录时用）
+        //
+        //parent.CropOk('1','201601/vtu/mgz/57944_17841_l.jpg')
+        function CropOk(imgFile) {
+
+            //imgFile = 'https://avatar.kuangxiangit.com/novel/' + getFileUrlByStyle(imgFile,'l');
+            imgFile = 'https://avatar.kuangxiangit.com/novel/' + imgFile;
+            $("#userAvatar").attr('src',imgFile+'?v1.1');
+            HB.util.alert('头像上传成功');
+            //closeAvatarform();
+            //showSelectForm();
+            window.location.reload();
+
+        }
+
+        //  提交Form表单并显示图片
+        function uploadPic() {
+            var domain = 'http://s.8kana.com';
+            //提交
+            $('#uploadFrom').submit();
+
+
+            $("#loading").show();
+            $("#uploadPic_wrap").hide();
+
+        }
+
+        //保存裁剪图片
+        function SaveImg() {
+            //#img_b3 裁剪框
+            var img3=document.getElementById('img_b3');
+            var left=img3.offsetLeft;
+            var top=img3.offsetTop;
+            var width=img3.offsetWidth;
+            var height=img3.offsetHeight;
+            $('#MainContainer').find('#top').val(top);
+            $('#MainContainer').find('#left').val(left);
+            $('#MainContainer').find('#width').val(width);
+            $('#MainContainer').find('#height').val(height);
+            //表单提交
+            $('#cropFrom').attr('action',strUploadUrl);
+            $('#cropFrom').submit();
+        }
+        function clickInput() {
+            $("#file1").trigger('click');
+        }
+    </script>
+    <script>
+        $(function () {
+            new uploadPreview({ UpBtn: "file1", DivShow: "img_c_1", ImgShow: "img_2", ImgType: ["gif", "jpeg", "jpg", "bmp", "png"],callback:function(){
+                uploadPic();
+                var $img_2=$("#img_2");
+                var strFile2=$img_2.attr('src');
+                var boxWidth2,boxHeight2;
+                var check = function(){
+                    // 只要任何一方大于0
+                    // 表示服务器已经返回宽高
+                    if($img_2.width()>0 || $img_2.height()>0){
+                        boxWidth2=$img_2.width();
+                        boxHeight2=$img_2.height();
+                        showCrop(strFile2,boxWidth2,boxHeight2);
+                        clearInterval(set);
+                    }
+                };
+                var set = setInterval(check,40);
+                function headChange(){
+                    $("#head").hide();
+                    $("#head1").show();
+                }
+                if($("#loading")){
+                    setTimeout(headChange,600);
+                }
+
+
+            } });
+        })
+    </script>
+
+    <div id="MainContainer">
+        <div id="head" style="display: block; width:98%;">
+            <div class="contentBoxIn1">
+                <div class="clearfix lightBox">
+                    <div class="left headBox_L">
+                        <div class="headBox_L_newshead_Box" style="overflow: hidden;">
+                            <div id="uploadPic_wrap">
+                                <a class="headBox_L_newshead" href="javascript:;" style="overflow: hidden;">
+                                    <i></i>
+                                </a>
+                                <form name="uploadFrom" id="uploadFrom" action="" method="post"  target="tarframe" enctype="multipart/form-data" style="position: absolute; top:-1px;left:200px;" >
+                                    <!--                                <form name="uploadFrom" id="uploadFrom" target="tarframe" enctype="multipart/form-data" style="position: absolute; top:-1px;left:200px;" >-->
+                                    <input type="file" id="file1" name="avatar" onchange="javascript:uploadPic()" style="display: block; width:103px;height: 104px;opacity:0; filter:alpha(opacity=0);" />
+                                    <input type="hidden" name="csrf_token" value="13409a29d40cd1ebffcca82d7a61d7b0">
+                                </form>
+                                <p>图片文件最大1M,支持jpg的图片格式</p>
+                                <input type="button" onclick="javascript:clickInput()" class="headBox_L_newshead_Btn" value="点击选中图片" style="margin-top: 20px;"/>
+                            </div>
+                            <img src="https://www.ciweimao.com/resources/images/img-loading.gif" id="loading" width="31" height="31" style="margin:36px auto 40px;display:none;"/>
+                        </div>
+
+                        <!--<input type="button"  class="headBox_L_newshead_Btn" value="点击选中图片" />-->
+                        <form name="cropFrom" id="cropFrom" action="" method="post"  target="tarframe">
+                            <input type="hidden" id="file_txt" name="file_txt" />
+                            <input type="hidden" id="top" name="top"/>
+                            <input type="hidden" id="left" name="left"/>
+                            <input type="hidden" id="width" name="width" value="140"/>
+                            <input type="hidden" id="height" name="height" value="140"/>
+                            <input type="hidden" id="csrf_token" name="csrf_token" value="13409a29d40cd1ebffcca82d7a61d7b0"/>
+                        </form>
+                        <iframe src=""  width="0" height="0" style="display:none;" name="tarframe">   </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="head1" style="display: none;">
+            <div class="contentBoxIn1">
+                <div id="CropContainer" style="height: 460px;padding:0 0 18px 0;" class="clearfix lightBox">
+                    <p style="color:#969696;margin-bottom:20px">编辑并预览图片：可以用鼠标拖动来调整位置和大小</p>
+                    <div class="img_a">
+                        <div class="img_c">
+                            <div class="img_c_1">
+                                <img src="" id="img_1" maxheight="420px" maxwidth="420px">
+                            </div>
+                            <p>140px*140px</p>
+                            <input type="button" onclick="javascript: SaveImg() " style="margin-top:100px;width:120px"  id="SaveCropPic" class="headBox_L_newshead_Btn" value="保存图片" />
+                            <a name="reset" href="javascript:;" onclick="javascript:showSelectForm();" >重新选择图片</a>
+                        </div>
+
+                        <div class="img_b" id="img_b" >
+                            <div class="img_d" id="img_b1"></div>
+                            <div class="img_d" id="img_b2"></div>
+                            <div class="img_d" id="img_b3">
+                                <div id="img_div"></div>
+                                <div id="img_dsf"></div>
+                            </div>
+                            <div class="img_d" id="img_b4"></div>
+                            <div class="img_d" id="img_b5"></div>
+                            <img id="img_2" maxwidth="420" maxheight="420">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!--container start-->
+<div class="container">
+    <div class="ly-wrap">
+        <div class="nav-side ly-fl">
+            <ul class="nav-box nav-homepage" >
+                <li><a th:href="@{shelf}">我的书架</a></li>
+                <li><a href="#">我的消息</a></li>
+                <li><a href="#" >我的书评</a></li>
+                <li><a href="#">钱包君</a></li>
+                <li><a href="#">我的好友</a></li>
+                <li class="selected"><a th:href="@{informa}">基本资料</a></li>
+            </ul>
+            <div class="recommend-box nearest-visitor border-box-shadow">
+
+            </div>
+        </div>
+        <div th:replace="${'userfragment/'+context}::${context}"></div>
+        <!--<div th:replace="~{userfragment/information::userinformation}"></div>-->
+    </div>
+
+    <div class="go-top" id="J_GoTop">
+        <a href="javascript:;">返回顶部</a>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        showAll();//阅读全文
+
+        var visitors = $(".nearest-visitor");//
+        var url = "https://www.ciweimao.com/reader/get_vistors";
+        var data = { };
+        visitors.load(url, data, function() {
+            //alert(111);
+        });
+
+    });
+
+    //阅读全文
+    function showAll() {
+        var h = 78;
+        $(".comment-list").find(".desc-content").each(function() {
+            if ($(this).outerHeight() > h) {
+                var $btn = $(this).next(".show-bar").find('.show-all');
+                $(this).css('height', h+'px');
+                $btn.show().one('click', function() {
+                    $(this).css('height', 'auto');
+                    $btn.hide();
+                });
+            }
+        });
+    }
+</script>
+<div class="footer">
+    <div class="ly-wrap">
+        <ul class="ly-fl about-us">
+            <li>
+                <dl>
+                    <dt><a href="https://www.ciweimao.com/index">首页</a></dt>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/sitemap">网站地图</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/about-us" rel="nofollow">关于刺猬猫</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>联系与合作</dt>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/contact-us" rel="nofollow">联系我们</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/join-us" rel="nofollow">加入我们</a></dd>
+                    <!-- <dd><a target="_blank" href="">帮助中心</a></dd> -->
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>移动客户端</dt>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/iphone" rel="nofollow">刺猬猫 iPhone 版</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/android" rel="nofollow">刺猬猫 Android 版</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/ipad" rel="nofollow">刺猬猫 iPad 版</a></dd>
+                </dl>
+            </li>
+            <!--             <li>
+                            <dl>
+                                <dt>安全认证</dt>
+                                <dd><a logo_size="83x30" logo_type="realname" href="http://www.anquan.org" ><script src="http://static.anquan.org/static/outer/js/aq_auth.js"></script></a></dd>
+                            </dl>
+                        </li> -->
+        </ul>
+        <div class="follow-us Reporting ly-fr">
+            <div class="hd">举报中心</div>
+            <div class="bd" id="">
+                <a class="J_footReport" href="javascript:;">我要举报</a>
+            </div>
+        </div>
+        <div class="ly-fr follow-us">
+            <div class="hd">关注我们</div>
+            <div class="bd" id="J_QrCodeWx">
+                小说资源互助群：274536193<br>
+                刺猬猫问题反馈群：436473245<br>
+                刺猬猫官方微信：<i><b></b></i>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        Copyright &copy; 2015 Hangzhou Fantasy Technology NetworkCo.,Ltd.
+    </div>
+
+</div>
+
+<!-- 用户操作 -->
+<div id="J_TuiJianBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">424</b></p>
+        </div>
+        <div class="line">
+            <p>您的推荐票余量:<br>
+                <b class="J_Recommend">0</b></p>
+        </div>
+        <div class="line-amount">
+            <span>打赏数量</span>
+            <a class="no-minus J_noMinus" href="javascript:;">-</a>
+            <input type="text" value="0" class="text-amount J_NumResult">
+            <a class="no-plus J_noPlus" href="javascript:;">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投推荐票</a>
+        </div>
+    </div>
+</div>
+<div id="J_YuePiaoBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">424</b></p>
+        </div>
+        <div class="line">
+            <p>您的月票余量:<br>
+                <b class="J_Stock">1</b></p>
+        </div>
+        <div class="line-amount">
+            <span>打赏数量</span>
+            <a class="no-minus J_noMinus" href="javascript:;">-</a>
+            <input type="text" value="1" class="text-amount J_NumResult">
+            <a class="no-plus J_noPlus" href="javascript:;">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投月票</a>
+        </div>
+    </div>
+</div>
+<div id="J_DingYueBox" style="display:none">
+    <div class="account-info dingyue-box">
+        <div class="line">
+            <p>
+                您的余额:<br><b class="J_HLB">424</b> 币
+            </p>
+        </div>
+        <div class="line">
+            <ul class="input-radio J_InputRadio">
+                <li>
+                    <a href="javascript:;" class="selected"> <i class="icon-select"></i><span class="heavy-font">全本购买</span>                        <input type="radio" class="J_NumResult" value="1" style="display:none" checked="checked">
+                    </a>
+                    <div class="item-desc">需购章节： 章，<br/>
+
+                        应付总额： 币<br>
+                    </div>
+                </li>
+            </ul>
+            <!--新增  复选框 start-->
+            <!--新增  复选框 end-->
+            <div class="item-desc dy-desc">
+                1、全本订阅是订阅目前已更新的全部章节，如期间有免费章节和已购买章节，下载时将一并下载。<br>
+                2、免费章节及已购买章节不会重复扣费，请放心购买。
+            </div>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a href="javascript:;" class="J_BoxSubmit btn btn-warning ly-fr" disabled="true">无需订阅</a>
+
+        </div>
+    </div>
+</div>
+<div id="J_DaShangBox" style="display:none">
+    <div class="account-type">
+        <ol class="input-radio J_InputRadio">
+            <li><a href="javascript:;" class="selected" data-type="shang">打赏</a></li>
+            <li><a href="javascript:;" data-type="prop">道具</a></li>
+        </ol>
+    </div>
+    <!-- <div class="account-info account-shang account-shang-planb J_AccountShang">-->
+    <div class="account-info account-shang J_AccountShang account-shang-planb">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">424</b></p>
+        </div>
+        <div class="line line-pd0">
+            <ul class="input-radio J_InputRadio clearfix">
+                <li>
+                    <a href="javascript:;" class="selected" data-prop-type="37"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="100" checked="checked">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-prop-type="38"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="588">
+                    </a>
+                </li>
+                <li>
+                    <a class="bdright" href="javascript:;" data-prop-type="39"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="1688">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="40"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="5000">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="41"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="10000" style="display:none">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom bdright" href="javascript:;" data-prop-type="42"><span>0</span>
+                        <input type="radio" class="J_NumResult" value="100000" style="display:none">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="line-amount J_NumCalculate">
+            <span>打赏数量</span>
+            <a href="javascript:;" class="no-minus J_noMinus">-</a>
+            <input type="text" value="1" class="text-amount J_NumResult" maxlength="10">
+            <a href="javascript:;" class="no-plus J_noPlus">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">立即打赏</a>
+        </div>
+    </div>
+    <div class="account-info account-prop J_AccountProp" style="display: none;">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">424</b>
+            </p>
+        </div>
+        <div class="line blade-box">
+            <div class="blade ly-fl"></div>
+            <div class="blade-info">
+                <h3 class="title">催更刀片</h3>
+                <p>想要加快更新速度？试试给作者寄刀片吧！</p>
+                <p>单价 <span class="J_BladePrice">100</span> 猫饼干</p>
+                <p class="own-blade">拥有 <i class="J_OwnBlade">2</i> 个</p>
+                <div class="blade-amount J_BladeAmount">
+                    <a href="javascript:;" class="no-minus J_noMinus">-</a>
+                    <input type="text" value="1" class="text-amount J_NumResult" maxlength="10"/>
+                    <a href="javascript:;" class="no-plus J_noPlus">+</a>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <p>需购道具&nbsp;&nbsp;<span class="heavy-font">催更刀片 x <i class="J_BladeNum">1</i></span></p>
+            <p>应付总额&nbsp;&nbsp;<b class="heavy-font"><b class="J_Consume">100</b> 猫饼干</b></p>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投出道具</a>
+        </div>
+    </div>
+</div>
+
+<!-- 登录框 -->
+<div id="J_LoginBox" style="display:none">
+    <div class="login-box">
+        <form action="https://www.ciweimao.com/signup/doLoginBox" class="form-box" id="J_LoginForm" name="J_LoginForm" method="post" onsubmit="doLoginBox();return false;">
+            <div class="input-group">
+                <input type="text" class="username" name="username" placeholder="手机号/邮箱">
+            </div>
+            <div class="input-group">
+                <input type="password" class="password" name="password" placeholder="密码">
+            </div>
+            <div class="input-group code-group">
+                <div id="embed-geetest-captcha"></div>
+                <p id="geetest-wait">正在加载验证码......</p>
+                <p id="geetest-notice">请先通过验证</p>
+                <script>
+                    HB.util.loadGeetest = function () {
+                        if (window.geetestCaptchaObj) {
+                            return;
+                        }
+                        var head = document.getElementsByTagName("head")[0];
+                        var s = document.createElement("script");
+                        s.src = "https://www.ciweimao.com/resources/js/gt3.0.js";
+                        head.appendChild(s);
+
+                        s.onload = s.onreadystatechange = function() {
+                            if (!this.readyState || 'loaded' === this.readyState || 'complete' === this.readyState) {
+                                $("#geetest-notice").hide();
+                                var handlerEmbed = function (captchaObj) {
+                                    $("#dosubmmit").click(function (e) {
+                                        var validate = captchaObj.getValidate();
+                                        if (!validate) {
+                                            $("#geetest-notice").show();
+                                            setTimeout(function () {
+                                                $("#geetest-notice").hide();
+                                            }, 2000);
+                                            e.preventDefault();
+                                        }
+                                    });
+                                    captchaObj.appendTo("#embed-geetest-captcha");
+                                    captchaObj.onReady(function () {
+                                        $("#geetest-wait").hide();
+                                    });
+                                    window.geetestCaptchaObj = captchaObj;
+                                };
+                                $.ajax({
+                                    // 获取id，challenge，success（是否启用failback）
+                                    url: "https://www.ciweimao.com/signup/geetest_captcha?t=" + (new Date()).getTime(), // 加随机数防止缓存
+                                    type: "get",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        // 使用initGeetest接口
+                                        // 参数1：配置参数
+                                        // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                                        initGeetest({
+                                            gt: data.gt,
+                                            challenge: data.challenge,
+                                            product: "float", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                                            offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                                            width:"100%"// 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+                                        }, handlerEmbed);
+                                    }
+                                });
+                            }
+                        };
+                    };
+                </script>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-warning" name="dosubmmit" id="dosubmmit">登录</button>
+            </div>
+            <div class="form-ft clearfix">
+			<span class="tl">
+				<label><input type="checkbox" name="autoLogin">自动登录</label>
+			</span>
+                <span class="tr">
+				<a href="https://www.ciweimao.com/signup/modify_passwd_page?redirect=https://www.ciweimao.com/reader/my_info">忘记密码&nbsp;&nbsp;|&nbsp;</a>
+				<a href="https://www.ciweimao.com/signup/register?redirect=https://www.ciweimao.com/reader/my_info">注册</a>
+			</span>
+            </div>
+        </form>
+        <div class="login-ft">
+            <div class="otherUser">
+                <div class="otherUser_T">使用第三方账号登录</div>
+                <div class="otherUser_B">
+                    <a href="https://www.ciweimao.com/signup/qqlogin?redirect=https%3A%2F%2Fwww.ciweimao.com%2Freader%2Fmy_info" class="qqLogin"></a>
+                    <!-- <a href="javascript:;" class="wbLogin"></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/jquery-plugins/jquery.validate/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dialog-form-2.js}"></script>
+<script type="text/javascript" th:src="@{/js/artDialog/6.0.4/dialog-min.js}"></script>
+<script type="text/javascript">
+    function doLoginBox(){
+        var self = $(this);
+        var username = $("input[name='username']").val();
+        var password = $("input[name='password']").val();
+
+        var autoLogin=$("input[name='autoLogin']:checked").val();
+
+        var post_data = {};
+        if(window.geetestCaptchaObj) {
+            var validate = window.geetestCaptchaObj.getValidate();
+            if (!validate) {
+                $("#geetest-notice").show();
+                setTimeout(function () {
+                    $("#geetest-notice").hide();
+                }, 2000);
+                return;
+            }
+            post_data = {username: username, password: password, autoLogin:autoLogin};
+            var validateDict = window.geetestCaptchaObj.getValidate();
+            for(var key in validateDict) {
+                post_data[key] = validateDict[key];
+            }
+        } else {
+            var code = $("input[name='code']").val();
+            if(code==''){
+                HB.util.alert("请输入验证码!");
+                return;
+            }
+            post_data = {username: username, password: password, code: code,autoLogin:autoLogin};
+        }
+
+        var dosubmmit = $("#dosubmmit");
+        if(dosubmmit.prop('disabled')) return false;
+
+        $.ajax({
+            url: HB.config.rootPath + 'signup/doLoginBox',
+            data: post_data,
+            beforeSubmit: function() {
+                dosubmmit.prop("disabled", true);
+            },
+            complete: function () {
+                dosubmmit.prop("disabled", false);
+            },
+            success: function (res) {
+                if (res.code == 100000) {
+                    var msg = res.tip ? res.tip : '登录成功！';
+                    HB.util.alert(msg);
+                    //$("#J_LoginBox").attr('style','display:none');
+                    window.location.reload();
+                } else {
+                    HB.util.alert(res.tip,1);
+                    $("#code").trigger('click');
+                    if(window.geetestCaptchaObj) {
+                        window.geetestCaptchaObj.reset();
+                    }
+                }
+            }
+        });
+    }
+</script><div style="display: none">
+    <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1276028418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1276028418' type='text/javascript'%3E%3C/script%3E"));
+
+        //页脚举报
+        $(".J_footReport").click(function() {
+            if (HB.userinfo.reader_id) {
+                var content = '<ul class="J_InputRadio input-radio">' +
+                    '<li>' +
+                    '<a href="javascript:;" class="selected">' +
+                    '<div class="ly-fl radio">' +
+                    '<i class="icon-select"></i>' +
+                    '<input type="radio" class="J_NumResult hide" name="inform_type" value="1">' +
+                    '</div>' +
+                    '<div class="item">' +
+                    '<h3 class="tit">发布不正当内容</h3>' +
+                    '<p class="tips">当前页存在色情、暴力、恐怖、广告、违法等低俗不正当内容</p>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>' +
+                    '<input class="J_footReport_CommentInput" style="\n' +
+                    '    width: 351px;\n' +
+                    '    height: 40px;\n' +
+                    '    margin-left: 28px;\n' +
+                    '    background: #EAEAEA;\n' +
+                    '    border-radius: 6px;\n' +
+                    '    border: none;\n' +
+                    '    padding-left: 16px;\n' +
+                    '" placeholder="我来说两句......">' +
+                    '</ul>';
+
+                var d = dialog({
+                    title:'我要举报',
+                    fixed: true,
+                    skin: "dialog-box dialog-report",
+                    content: content,
+                    button: [
+                        {
+                            value: '提交',
+                            callback: function () {
+                                submit_informant_footreport();
+                            },
+                            autofocus: true
+                        }
+                    ]
+                });
+                d.showModal();
+            } else {
+                HB.util.loginDialog();
+            }
+        });
+
+        function submit_informant_footreport() {
+            var csrf_token = HB.util.Cookie.get('login_token');
+            var cnt =  $('.J_footReport_CommentInput').val();
+            $.ajax({
+                url: HB.config.rootPath + 'reader/inform_url',
+                data: {
+                    content:cnt,
+                    csrf_token:csrf_token,
+                },
+                success: function (res) {
+                    if (res.code == 100000) {
+                        HB.util.alert(res.tip,1);
+                    }
+                    else {
+                        HB.util.alert(res.tip,1);
+                    }
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

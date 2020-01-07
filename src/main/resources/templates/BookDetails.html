@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta property="qc:admins" content="2554576230602773526375" />
+    <meta name="baidu-site-verification" content="81BLZ1C2Te" />
+    <!-- 百度验证  -->
+    <meta name="baidu-site-verification" content="23p76Y9LU3" />
+    <!--360验证-->
+    <meta name="360-site-verification" content="1247af3cd890cf522c64a0188211dfba" />
+    <!--神马平台验证-->
+    <meta name="shenma-site-verification" content="6ddf919e460df88fe12310e2097a23cc_1497866600" />
+    <title th:text="${bkname}"></title>
+    <meta name="keywords" content="继承的假面,继承的假面最新章节,继承的假面全文阅读"/>
+    <meta name="description" content="未知的神秘现象【文明阻断】，百年来一直阻碍着人类对外界的探索；
+在这样的虹国里，妄图颠覆世界的黑暗正在蠢蠢欲动；
+而一位继承了骑士精神的少年，决心要守护所有人的梦想——
+“骑士系统从来就不是什么带来力量的工具！”
+“假面骑士们也从来不是某个人的空想！”
+“历代的前辈们，无论面对怎样的绝境，如何强大的敌人，都没有后退过哪怕一步！”
+“即使盔甲早已支离破碎，即使身躯残已经破不堪，他们依旧拖着残破的身躯，拼尽自己最后的力量战斗！”
+“这就是所谓的假面骑士，他们切实的存在着！只要有人还记得骑士，骑士就存在于此！”
+“既然我继承了这个身份，使用着这份力量，那我，也必将贯彻属于假面骑士的正义！”
+“Henshin!”"/>
+    <!--wap-->
+    <meta name="mobile-agent" content="format=xhtml; url=https://wap.ciweimao.com/book/100130170">
+    <meta name="mobile-agent" content="format=html5; url=https://wap.ciweimao.com/book/100130170">
+    <!--<link rel="shortcut icon" type="image/x-icon" href=""/>-->
+    <link rel="shortcut icon" href="https://www.ciweimao.com/resources/image/icon/CiWeiMao_Icon_32_R.png">
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/style-1.2.3.css}"/>
+    <!--<link rel="stylesheet" type="text/css" href=''/>-->
+    <!--<link rel="stylesheet" type="text/css" href=''/>-->
+    <!--<script type="text/javascript" language="javascript" src=''></script>-->
+    <script type="text/javascript" language="javascript" th:src="@{scripts/bootstrap/js/jquery.js}"></script>
+    <script type="text/javascript" language="javascript" src="scripts/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript">
+        var HB = HB || {};
+        HB.config = {jsPath:'https://www.ciweimao.com/resources/js', rootPath:'https://www.ciweimao.com/'};
+        HB.book = {book_id: 100130170, chapter_id: "", up_reader_id: 296680, is_paid: 1};
+        HB.userinfo = {reader_id: 0,tel_num: '',license: '',redis_license: '', reader_name: '""', avatar_thumb_url: '""', vip_lv: ""};
+        HB.urlinfo ={redirect:'https://www.ciweimao.com/reader/modify_mobile?redirect=https%3A%2F%2Fwww.ciweimao.com%2Fbook%2F100130170'};
+    </script>
+    <!--<script type="text/javascript" src=""></script>-->
+    <script type="text/javascript" th:src="@{/js/base.js}"></script>
+    <script type="text/javascript" th:src="@{/js/artDialog/6.0.4/dialog-min.js}"></script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1dbadbc80ffab52435c688db7b756e3a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!--<script>
+		(function(para) {
+		  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+		  w['sensorsDataAnalytic201505'] = n;
+		  w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+		  var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister','getAppStatus'];
+		  for (var i = 0; i < ifs.length; i++) {
+		    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+		  }
+		  if (!w[n]._t) {
+		    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+		    x.async = 1;
+		    x.src = p;
+		    x.setAttribute('charset','UTF-8');
+		    y.parentNode.insertBefore(x, y);
+		    w[n].para = para;
+		  }
+		})({
+		  sdk_url: 'https://www.hbooker.com/resources/js/sensorsdata/sensorsdata.min.js',
+		  name: 'sa',
+		  web_url: 'https://sensorsdata.hbooker.com:4006/?project=production',
+		  server_url: 'https://sensorsdata.hbooker.com:4006/sa?project=production',
+		  heatmap:{}
+		});
+		sa.quick('autoTrack');
+	</script>-->
+</head>
+<body>
+<!-- 当前是章节阅读页 -->
+<!-- 当前是漫画阅读页 -->
+<div id="bdstat" style="display: none"></div>
+
+<div th:if="${session.logininfo}!=null"><div th:replace="~{fragment/headers::headers}"></div></div>
+<div th:if="${session.logininfo}==null"><div th:replace="~{fragment/header::header}"></div></div>
+
+<!--  欢迎每日登录 领取推荐票 -->
+<div class="dialogLoginBox" id="J_DialogLoginBox" style="display: none;">
+    <div class="bd">
+        <p>  你好~~</p>
+        <p>送你 <b>
+            0		</b> 张推荐票哦~</p>
+        <p class="tips">登陆刺猬猫APP，<br/>完成每日签到任务，<br/>更有好礼相送。</p>
+    </div>
+    <div class="ft">
+        <!--        <a class="btn-gettuijian" href="javascript:;" id="J_GetTJTicket">领取推荐票</a>-->
+        <p class="auto-close"><i id="J_Timer">3</i>s后关闭</p>
+    </div>
+</div>
+<div class="header">
+    <div class="menu-wrap" id="J_MenuFixed">
+        <div class="ly-wrap menu-inner">
+            <ul class="menu-nav ly-fl clearfix">
+                <li><a th:href="@{index}"  rel="nofollow">首页</a></li>
+                <li><a href="#" >排行</a></li>
+                <li><a href="#" >书库</a></li>
+                <li><a href="#" >漫画</a></li>
+                <li style="display:none;"><a href="#" >游戏</a></li>
+
+                <li><a href="#"  >社区</a></li>
+            </ul>
+            <ul class="special ly-fr clearfix">
+                <li class="p-tutelage"><a href="#" target="_blank" rel="nofollow">家长监护</a></li>
+                <li class="recharge"><a href="#" rel="nofollow"><i></i>充值中心</a></li>
+                <li class="author"><a href="#" target="_blank" rel="nofollow"><i></i>作者后台</a></li>
+                <li class="Reporting"><a href="javascript:;" class="J_footReport">我要举报</a></li>
+            </ul>
+        </div>
+        <b></b>
+    </div>
+</div>
+<!--container start-->
+<div class="book-read"></div>
+<div class="container">
+    <div class="ly-wrap">
+        <div class="breadcrumb">
+            <a th:href="@{index}" rel="nofollow">首页</a> >
+            <a href='https://www.ciweimao.com/index/header_cate_list/zhaiwen' rel='nofollow'>宅文</a> > <a href='https://www.ciweimao.com/book_list/yijie/'>异界幻想</a> >                         继承的假面                </div>
+        <div class="book-detail" th:each="debook:${debook}">
+            <div class="ly-main">
+                <div class="book-hd border-box-shadow">
+                    <div class="cover ly-fl">
+                        <img th:src="${debook.coverpath}" alt="">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="title" th:text="${debook.bookName}">继承的假面<span><a href="#" target="_blank">九尾久违</a> 著</span></h3>
+                        <p class="label-box">
+                            <span class="label label-warning">假面骑士</span>
+                            <span class="label label-warning">都市</span>
+                        </p>
+                        <p class="update-state" th:text="${debook.statu}">连载中·本站首发</p>
+                        <a href="https://www.ciweimao.com/chapter/104474106" target="_blank"><p class="update-time">最后更新：第七十一章   支援 [ 2019-11-30 23:29:19 ]</p></a>
+                        <p class="book-grade">总点击：<b>17.5万</b> 总收藏：<b>591</b> 总字数：<b th:text="${debook.wordNum}">204446</b></p>
+                        <div class="btn-group">
+                            <a class="btn btn-lg btn-danger" href="#">立即阅读</a>
+                            <a  class="J_ShouCang btn btn-lg btn-default"  ><span id="addshelfs" th:text="${session.ifshelf}">放入书架</span> </a>
+                           <!--<a th:if="${session.ifshelf}=='out'" class="J_ShouCang btn btn-lg btn-default shoucanged" th:id="delshelf" >已放入书架</a>-->
+                        <!--<a class='J_DingYue btn btn-lg btn-default' id='J_DingYue' href='javascript:'>订阅</a>                                                        &lt;!&ndash; <a  class="btn btn-lg btn-default" href="book_detail">章节目录</a>&ndash;&gt;-->
+                        </div>
+                    </div>
+                    <div class="book-bd act-tab">
+                        <ul class="act-tab-titles">
+                            <li class="selected"><a href="javascript:;">作品简介</a></li>
+                            <li><a href="javascript:;">作品信息</a></li>
+                        </ul>
+                        <div class="act-tab-content">
+                            <div class="book-intro">
+                                <div class="book-intro-cnt">
+                                    <div class="book-desc J_mCustomScrollbar" th:text="${debook.bookInformation}">
+                                        未知的神秘现象【文明阻断】，百年来一直阻碍着人类对外界的探索；<br />
+                                        在这样的虹国里，妄图颠覆世界的黑暗正在蠢蠢欲动；<br />
+                                        而一位继承了骑士精神的少年，决心要守护所有人的梦想——<br />
+                                        “骑士系统从来就不是什么带来力量的工具！”<br />
+                                        “假面骑士们也从来不是某个人的空想！”<br />
+                                        “历代的前辈们，无论面对怎样的绝境，如何强大的敌人，都没有后退过哪怕一步！”<br />
+                                        “即使盔甲早已支离破碎，即使身躯残已经破不堪，他们依旧拖着残破的身躯，拼尽自己最后的力量战斗！”<br />
+                                        “这就是所谓的假面骑士，他们切实的存在着！只要有人还记得骑士，骑士就存在于此！”<br />
+                                        “既然我继承了这个身份，使用着这份力量，那我，也必将贯彻属于假面骑士的正义！”<br />
+                                        “Henshin!”                                                                        </div>
+                                </div>
+                                <div class="book-tip">（本站郑重提醒: 本故事纯属虚构，如有雷同，纯属巧合，切勿模仿。)</div>
+                            </div>
+                        </div>
+                        <div class="act-tab-content" style="display:none">
+                            <div class="book-intro">
+                                <div class="book-intro-cnt">
+                                    <div class="book-property clearfix">
+                                        <span>小说性质：<i>VIP书籍</i></span>
+                                        <span>总点击: <i>17.5万</i></span>
+                                        <span>月点击：<i>0.2万</i></span>
+                                        <span>周点击：<i>2.1万</i></span>
+                                        <span>小说类别：<i>异界幻想</i></span>
+                                        <span>总推荐：<i>524</i></span>
+                                        <span>月推荐：<i>10</i></span>
+                                        <span>周推荐：<i>79</i></span>
+                                        <span>完成字数：<i>204446</i></span>
+                                        <span class="theme-color">本站首发</span>
+                                    </div>
+                                </div>
+                                <div class="book-tip">
+                                    （本站郑重提醒: 本故事纯属虚构，如有雷同，纯属巧合，切勿模仿。)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="book-ft">
+                    <div class="book-chapter">
+                        <div class="mod-box ly-mt30">
+                            <div class="mod-tit">
+                                <h3 class="icon-catalog">章节目录<a class="btn-more ly-fr" href="https://www.ciweimao.com/chapter-list/100130170/book_detail" target="_blank">所有章节 ></a></h3>
+                            </div>
+                            <div class="mod-bd book-chapter-detail border-box-shadow">
+                                <h3 class="tit"><a href="#" target="_blank">第七十一章   支援</a><span>更新时间：2019-11-30 23:29:19</span>
+                                    <a class="btn btn-md btn-default btn-order-by ly-fr" href="https://www.ciweimao.com/book/100130170?arr_reverse=1">倒序</a>
+                                </h3>
+                                <div class="book-chapter-box less">
+                                    <h4 class="sub-tit">第一卷</h4>
+                                    <ul class="book-chapter-list">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                第一章 心怀理想的少年																					</a>
+
+
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                                <a class="btn-read-all" id="J_ReadAll" href="javascript:;">展开更多目录</a>
+                            </div>
+                        </div>
+                        <div class="mod-box author-info-box ly-mt30">
+                            <div class="mod-tit">
+                                <h3 class="icon-write">作者信息</h3>
+                            </div>
+                            <div class="mod-bd border-box-shadow ly-mt10">
+                                <div class="author-info">
+                                    <a class="avatar" href="#" target="_blank">
+                                        <img class="lazyload" src="https://www.ciweimao.com/resources/images/transparent.png" data-original="https://avatar.kuangxiangit.com/novel/img-2016-07/296680/avatar/thumb_e50b25fd27ffa6efe0e691a179fc84f4.jpg" alt="九尾久违">
+                                        <h3>九尾久违</h3>
+                                    </a>
+                                    <p class="level"><i class="icon-level-h"></i> LV 13荣耀元老 </p>
+                                </div>
+                                <div class="J_BookListBox book-list-box">
+                                    <a class="prev" href="javascript:;"></a>
+                                    <a class="next" href="javascript:;"></a>
+                                    <div class="book-list-wrap">
+                                        <ul class="book-list">
+
+                                            <li>
+                                                <a class="cover" target="_blank" href="#">
+                                                    <img class="lazyload" src="https://www.ciweimao.com/resources/images/tmp/cover.jpg" data-original="https://novel-cdn.kuangxiangit.com/uploads/allimg/c191118/18-11-19140722-88772-100130170.jpg" alt="继承的假面">
+                                                </a>
+                                                <p><a href="#" target="_blank">继承的假面</a></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="tips">作者的本站作品（1）</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod-box ly-mt60">
+                            <div class="mod-tit" id="book_detail_item">
+                                <h3 class="icon-orange-claw">书评区<sub>快来评价一下这部作品吧！</sub></h3>
+                            </div>
+                            <div class="mod-sub-tit">
+                                <div>书评总数量：<span><s id="J_CommentNum">1</s> 条</span></div>
+                                <div>本书管理员：
+                                    <p class="img">暂无管理员</p>
+                                </div>
+                            </div>
+                            <div class="mod-bd book-chapter-comment J_BookChapterComment" id="book_review_box">
+                                <textarea class="J_CommentInput comment-input" maxlength="1000" placeholder="快来吐槽这本书吧，注意文明用语哦\^o^/"></textarea>
+                                <div class="comment-operate">
+                                    <div class="J_Face comment-face ly-fl">
+                                        <div class="face-btn">颜文字</div>
+                                        <div class="J_FaceDialog face-dialog" style="display:block;visibility:hidden"></div>
+                                    </div>
+                                    <div class="ly-fr">
+                                        <span class="J_CommentWordsCount">0</span>/<span class="J_CommentWordsCountLimit">1000</span>
+                                        <a class="J_ReplayBtn btn btn-md btn-warning ly-ml10" href="javascript:;">发表</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod-box ly-mt30">
+                            <div class="J_CommentList comment-box border-box-shadow">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ly-side">
+                <div class="book-support-box border-box-shadow">
+                    <h3 class="tit">支持作品</h3>
+                    <ol>
+                        <li class="recommend">
+                            <h3>524</h3>
+                            <p>拥有：<b class='J_Recommend'>0</b></p>
+                            <a class="J_TuiJian btn btn-lg btn-warning" href="javascript:;">投推荐票</a>
+                        </li>
+                        <li class="month">
+                            <h3>17</h3>
+                            <p>拥有：<b class='J_Stock'>0</b></p>
+                            <a class="J_YuePiao btn btn-lg btn-forbid" href="javascript:;">投月票</a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="J_DaShangBox act-tab book-support-box border-box-shadow ly-mt20">
+                    <ul class="act-tab-titles">
+                        <li class="selected"><a href="javascript:;">打赏作品</a></li>
+                        <li><a href="javascript:;">使用道具</a></li>
+                    </ul>
+                    <div class="act-tab-content">
+                        <ul class="J_InputRadio input-radio-simple">
+                            <li>
+                                <a class="selected" title="辣条 100猫饼干" data-prop-type="37" href="javascript:;">
+                                    辣条                                                                <input type="radio" class="J_NumResult" value="100" checked/>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="咸鱼突刺 588猫饼干" data-prop-type="38" href="javascript:;">
+                                    咸鱼突刺                                                                <input type="radio" class="J_NumResult" value="588"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="肥皂 1688猫饼干" data-prop-type="39" href="javascript:;">
+                                    肥皂                                                                <input type="radio" class="J_NumResult" value="1688"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="狗粮 5000猫饼干" data-prop-type="40" href="javascript:;">
+                                    狗粮                                                                <input type="radio" class="J_NumResult" value="5000"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="胖次 10000猫饼干" data-prop-type="41" href="javascript:;">
+                                    胖次                                                                <input type="radio" class="J_NumResult" value="10000"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="女朋友 100000猫饼干" data-prop-type="42" href="javascript:;">
+                                    女朋友                                                                <input type="radio" class="J_NumResult" value="100000"/>
+                                </a>
+                            </li>
+                        </ul>
+                        <a class="J_DaShang simple btn btn-lg btn-warning btn-da-shang" href="javascript:;">确定打赏</a>
+                    </div>
+                    <div class="J_AccountProp act-tab-content hide">
+                        <input type="text" class="J_HLB hide" name="hlb" value="">
+                        <div class="blade-box">
+                            <div class="blade ly-fl"></div>
+                            <div class="blade-info">
+                                <h3 class="title">催更刀片</h3>
+                                <p>想要加快更新速度？寄刀片吧！</p>
+                                <p>单价 <span class="J_BladePrice">100</span> 猫饼干</p>
+                                <p class="own-blade">拥有 <i class="J_OwnBlade">0</i> 个</p>
+                                <div class="blade-amount J_BladeAmount">
+                                    <a href="javascript:;" class="no-minus J_noMinus">-</a>
+                                    <input type="text" value="1" class="text-amount J_NumResult" maxlength="10">
+                                    <a href="javascript:;" class="no-plus J_noPlus">+</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="J_BoxSubmit simple btn btn-lg btn-warning btn-da-shang" data-type="prop" href="javascript:;">投出道具</a>
+                    </div>
+                </div>
+
+                <div class="recommend-box recommend-box-lite ly-mt30">
+                    <h3 class="title icon-history">最新异界幻想小说</h3>
+                    <div class="category-recent-book-list">
+                        <ul>
+                            <li class="top" >
+                                <a href="#" target="_blank" title="瓦罗兰的流浪者">
+                                    <i class="icon-top">1</i>瓦罗兰的流浪者																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li class="top" >
+                                <a href="#" target="_blank" title="选择的权利">
+                                    <i class="icon-top">2</i>选择的权利																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="一个半死者不得不说的故事">
+                                    <i class="icon-top">3</i>一个半死者不得不说的故事																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="天哪噜！魔王驾到！">
+                                    <i class="icon-top">4</i>天哪噜！魔王驾到！																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="异世界的逃婚日常">
+                                    <i class="icon-top">5</i>异世界的逃婚日常																<span class="num">3.3万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="我师弟实在太慎重了">
+                                    <i class="icon-top">6</i>我师弟实在太慎重了																<span class="num">3.8万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="这个干员实在太谨慎了">
+                                    <i class="icon-top">7</i>这个干员实在太谨慎了																<span class="num">1.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="起源联盟">
+                                    <i class="icon-top">8</i>起源联盟																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="勇者帝传">
+                                    <i class="icon-top">9</i>勇者帝传																<span class="num">0.1万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="我龙骑才是主角啊">
+                                    <i class="icon-top">10</i>我龙骑才是主角啊																<span class="num">0.4万</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="recommend-box recommend-box-lite ly-mt30">
+                    <h3 class="title icon-mouse">异界幻想小说点击榜</h3>
+                    <div class="category-clicks-book-list">
+                        <ul>
+                            <li class="top" >
+                                <a href="#" target="_blank" title="我的大宝剑">
+                                    <i class="icon-top">1</i>我的大宝剑																<span class="num">27,152.4万</span>
+                                </a>
+                            </li>
+                            <li class="top" >
+                                <a href="#" target="_blank" title="文明：超越两界">
+                                    <i class="icon-top">2</i>文明：超越两界																<span class="num">9,247.6万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="群星之子逃婚录">
+                                    <i class="icon-top">3</i>群星之子逃婚录																<span class="num">8,010.5万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="全职业满级之后">
+                                    <i class="icon-top">4</i>全职业满级之后																<span class="num">6,605.4万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="新手村村长">
+                                    <i class="icon-top">5</i>新手村村长																<span class="num">5,775.9万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="兄长大人的镇守府">
+                                    <i class="icon-top">6</i>兄长大人的镇守府																<span class="num">5,131.4万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="大明:征服天堂">
+                                    <i class="icon-top">7</i>大明:征服天堂																<span class="num">5,123.8万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="魔王也想谈恋爱">
+                                    <i class="icon-top">8</i>魔王也想谈恋爱																<span class="num">4,124.7万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="满级的我，在灵异画风的仙侠世界混吃等死">
+                                    <i class="icon-top">9</i>满级的我，在灵异画风的仙侠世界混吃等死																<span class="num">3,613.9万</span>
+                                </a>
+                            </li>
+                            <li  >
+                                <a href="#" target="_blank" title="我不是大神">
+                                    <i class="icon-top">10</i>我不是大神																<span class="num">3,604.3万</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="recommend-box recommend-box-avatar true-fans-box ly-mt30">
+                    <h3 class="title icon-v">铁杆粉丝榜</h3>
+                    <div class="book-fansboard">
+                        <ul>加载中...</ul>
+                    </div>
+                </div>
+                <div class="recommend-box fans-box famous-fans-box ly-mt30">
+                    <h3 class="title icon-cool">本书名人榜</h3>
+                    <div class="book-leaderboard">
+                        <ul>
+                            <li>
+                                加载中...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="recommend-box fans-support-box ly-mt30">
+                    <h3 class="title icon-fans">粉丝支持</h3>
+                    <div class="book-fans-support">
+                        加载中...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="go-top" id="J_GoTop">
+            <a href="javascript:;">返回顶部</a>
+        </div>
+    </div>
+</div>
+<!--container end-->
+<div class="sidebar" id="J_AppDownloadSite">
+    <!--<a class="app-download" href="#" target="_blank">下载APP</a>-->
+    <!--<a class="feedback" href="javascript:;">意见反馈</a>-->
+</div>
+<!-- 用户操作 -->
+<div id="J_TuiJianBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+        </div>
+        <div class="line">
+            <p>您的推荐票余量:<br>
+                <b class="J_Recommend">0</b></p>
+        </div>
+        <div class="line-amount">
+            <span>打赏数量</span>
+            <a class="no-minus J_noMinus" href="javascript:;">-</a>
+            <input type="text" value="0" class="text-amount J_NumResult">
+            <a class="no-plus J_noPlus" href="javascript:;">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="#" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投推荐票</a>
+        </div>
+    </div>
+</div>
+<div id="J_YuePiaoBox" class="J_GiveGift" style="display:none">
+    <div class="account-info">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+        </div>
+        <div class="line">
+            <p>您的月票余量:<br>
+                <b class="J_Stock">0</b></p>
+        </div>
+        <div class="line-amount">
+            <span>打赏数量</span>
+            <a class="no-minus J_noMinus" href="javascript:;">-</a>
+            <input type="text" value="0" class="text-amount J_NumResult">
+            <a class="no-plus J_noPlus" href="javascript:;">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="#" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投月票</a>
+        </div>
+    </div>
+</div>
+<div id="J_DingYueBox" style="display:none">
+    <div class="account-info dingyue-box">
+        <div class="line">
+            <p>
+                您的余额:<br><b class="J_HLB">0</b> 币
+            </p>
+        </div>
+        <div class="line">
+            <ul class="input-radio J_InputRadio">
+                <li>
+                    <a href="javascript:;" class="selected"> <i class="icon-select"></i><span class="heavy-font">全本购买</span>                        <input type="radio" class="J_NumResult" value="1" style="display:none" checked="checked">
+                    </a>
+                    <div class="item-desc">需购章节：5 章，<br/>
+
+                        应付总额：52 币<br>
+                        <span>您将购买：第六十七章   告一段落</span><br>
+                        <span>至：第七十一章   支援</span>
+                    </div>
+                </li>
+            </ul>
+            <!--新增  复选框 start-->
+            <!--新增  复选框 end-->
+            <div class="item-desc dy-desc">
+                1、全本订阅是订阅目前已更新的全部章节，如期间有免费章节和已购买章节，下载时将一并下载。<br>
+                2、免费章节及已购买章节不会重复扣费，请放心购买。
+            </div>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="#" target="_blank">充值中心</a>
+            <a href="javascript:;" class="J_BoxSubmit btn btn-warning ly-fr">确认订阅</a>
+
+        </div>
+    </div>
+</div>
+<div id="J_DaShangBox" style="display:none">
+    <div class="account-type">
+        <ol class="input-radio J_InputRadio">
+            <li><a href="javascript:;" class="selected" data-type="shang">打赏</a></li>
+            <li><a href="javascript:;" data-type="prop">道具</a></li>
+        </ol>
+    </div>
+    <!-- <div class="account-info account-shang account-shang-planb J_AccountShang">-->
+    <div class="account-info account-shang J_AccountShang account-shang-planb">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b></p>
+        </div>
+        <div class="line line-pd0">
+            <ul class="input-radio J_InputRadio clearfix">
+                <li>
+                    <a href="javascript:;" class="selected" data-prop-type="37"><span></span>
+                        <input type="radio" class="J_NumResult" value="100" checked="checked">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-prop-type="38"><span></span>
+                        <input type="radio" class="J_NumResult" value="588">
+                    </a>
+                </li>
+                <li>
+                    <a class="bdright" href="javascript:;" data-prop-type="39"><span></span>
+                        <input type="radio" class="J_NumResult" value="1688">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="40"><span></span>
+                        <input type="radio" class="J_NumResult" value="5000">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom" href="javascript:;" data-prop-type="41"><span></span>
+                        <input type="radio" class="J_NumResult" value="10000" style="display:none">
+                    </a>
+                </li>
+                <li>
+                    <a class="bgbottom bdright" href="javascript:;" data-prop-type="42"><span></span>
+                        <input type="radio" class="J_NumResult" value="100000" style="display:none">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="line-amount J_NumCalculate">
+            <span>打赏数量</span>
+            <a href="javascript:;" class="no-minus J_noMinus">-</a>
+            <input type="text" value="1" class="text-amount J_NumResult" maxlength="10">
+            <a href="javascript:;" class="no-plus J_noPlus">+</a>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="#" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">立即打赏</a>
+        </div>
+    </div>
+    <div class="account-info account-prop J_AccountProp" style="display: none;">
+        <div class="line">
+            <p>您的猫饼干余额:<br>
+                <b class="J_HLB">0</b>
+            </p>
+        </div>
+        <div class="line blade-box">
+            <div class="blade ly-fl"></div>
+            <div class="blade-info">
+                <h3 class="title">催更刀片</h3>
+                <p>想要加快更新速度？试试给作者寄刀片吧！</p>
+                <p>单价 <span class="J_BladePrice">100</span> 猫饼干</p>
+                <p class="own-blade">拥有 <i class="J_OwnBlade">0</i> 个</p>
+                <div class="blade-amount J_BladeAmount">
+                    <a href="javascript:;" class="no-minus J_noMinus">-</a>
+                    <input type="text" value="0" class="text-amount J_NumResult" maxlength="10"/>
+                    <a href="javascript:;" class="no-plus J_noPlus">+</a>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <p>需购道具&nbsp;&nbsp;<span class="heavy-font">催更刀片 x <i class="J_BladeNum">1</i></span></p>
+            <p>应付总额&nbsp;&nbsp;<b class="heavy-font"><b class="J_Consume">100</b> 猫饼干</b></p>
+        </div>
+        <div class="form-btn">
+            <a class="btn btn-default" href="https://www.ciweimao.com/recharge/index" target="_blank">充值中心</a>
+            <a class="J_BoxSubmit btn btn-warning ly-fr" href="javascript:;">投出道具</a>
+        </div>
+    </div>
+</div>
+
+<!-- 登录框 -->
+<!--<div id="J_LoginBox" style="display:none">-->
+    <!--<div class="login-box">-->
+        <!--<form action="#" class="form-box" id="J_LoginForm" name="J_LoginForm" method="post" onsubmit="doLoginBox();return false;">-->
+            <!--<div class="input-group">-->
+                <!--<input type="text" class="username" name="username" placeholder="手机号/邮箱">-->
+            <!--</div>-->
+            <!--<div class="input-group">-->
+                <!--<input type="password" class="password" name="password" placeholder="密码">-->
+            <!--</div>-->
+            <!--<div class="input-group code-group">-->
+                <!--<div id="embed-geetest-captcha"></div>-->
+                <!--<p id="geetest-wait">正在加载验证码......</p>-->
+                <!--<p id="geetest-notice">请先通过验证</p>-->
+                <!--<script>-->
+                    <!--HB.util.loadGeetest = function () {-->
+                        <!--if (window.geetestCaptchaObj) {-->
+                            <!--return;-->
+                        <!--}-->
+                        <!--var head = document.getElementsByTagName("head")[0];-->
+                        <!--var s = document.createElement("script");-->
+                        <!--s.src = "https://www.ciweimao.com/resources/js/gt3.0.js";-->
+                        <!--head.appendChild(s);-->
+
+                        <!--s.onload = s.onreadystatechange = function() {-->
+                            <!--if (!this.readyState || 'loaded' === this.readyState || 'complete' === this.readyState) {-->
+                                <!--$("#geetest-notice").hide();-->
+                                <!--var handlerEmbed = function (captchaObj) {-->
+                                    <!--$("#dosubmmit").click(function (e) {-->
+                                        <!--var validate = captchaObj.getValidate();-->
+                                        <!--if (!validate) {-->
+                                            <!--$("#geetest-notice").show();-->
+                                            <!--setTimeout(function () {-->
+                                                <!--$("#geetest-notice").hide();-->
+                                            <!--}, 2000);-->
+                                            <!--e.preventDefault();-->
+                                        <!--}-->
+                                    <!--});-->
+                                    <!--captchaObj.appendTo("#embed-geetest-captcha");-->
+                                    <!--captchaObj.onReady(function () {-->
+                                        <!--$("#geetest-wait").hide();-->
+                                    <!--});-->
+                                    <!--window.geetestCaptchaObj = captchaObj;-->
+                                <!--};-->
+                                <!--$.ajax({-->
+                                    <!--// 获取id，challenge，success（是否启用failback）-->
+                                    <!--url: "https://www.ciweimao.com/signup/geetest_captcha?t=" + (new Date()).getTime(), // 加随机数防止缓存-->
+                                    <!--type: "get",-->
+                                    <!--dataType: "json",-->
+                                    <!--success: function (data) {-->
+                                        <!--// 使用initGeetest接口-->
+                                        <!--// 参数1：配置参数-->
+                                        <!--// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件-->
+                                        <!--initGeetest({-->
+                                            <!--gt: data.gt,-->
+                                            <!--challenge: data.challenge,-->
+                                            <!--product: "float", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效-->
+                                            <!--offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注-->
+                                            <!--width:"100%"// 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config-->
+                                        <!--}, handlerEmbed);-->
+                                    <!--}-->
+                                <!--});-->
+                            <!--}-->
+                        <!--};-->
+                    <!--};-->
+                <!--</script>-->
+            <!--</div>-->
+            <!--<div class="btn-group">-->
+                <!--<button type="submit" class="btn btn-warning" name="dosubmmit" id="dosubmmit">登录</button>-->
+            <!--</div>-->
+            <!--<div class="form-ft clearfix">-->
+			<!--<span class="tl">-->
+				<!--<label><input type="checkbox" name="autoLogin">自动登录</label>-->
+			<!--</span>-->
+                <!--<span class="tr">-->
+				<!--<a href="https://www.ciweimao.com/signup/modify_passwd_page?redirect=https://www.ciweimao.com/book/100130170">忘记密码&nbsp;&nbsp;|&nbsp;</a>-->
+				<!--<a href="https://www.ciweimao.com/signup/register?redirect=https://www.ciweimao.com/book/100130170">注册</a>-->
+			<!--</span>-->
+            <!--</div>-->
+        <!--</form>-->
+        <!--<div class="login-ft">-->
+            <!--<div class="otherUser">-->
+                <!--<div class="otherUser_T">使用第三方账号登录</div>-->
+                <!--<div class="otherUser_B">-->
+                    <!--<a href="#" class="qqLogin"></a>-->
+                    <!--&lt;!&ndash; <a href="javascript:;" class="wbLogin"></a> &ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<script type="text/javascript" th:src="@{js/jquery-plugins/jquery.validate/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dialog-form-2.js}"></script>
+<script type="text/javascript" th:src="@{/js/artDialog/6.0.4/dialog-min.js}"></script>
+<script type="text/javascript">
+    function doLoginBox(){
+        var self = $(this);
+        var username = $("input[name='username']").val();
+        var password = $("input[name='password']").val();
+
+        var autoLogin=$("input[name='autoLogin']:checked").val();
+
+        var post_data = {};
+        if(window.geetestCaptchaObj) {
+            var validate = window.geetestCaptchaObj.getValidate();
+            if (!validate) {
+                $("#geetest-notice").show();
+                setTimeout(function () {
+                    $("#geetest-notice").hide();
+                }, 2000);
+                return;
+            }
+            post_data = {username: username, password: password, autoLogin:autoLogin};
+            var validateDict = window.geetestCaptchaObj.getValidate();
+            for(var key in validateDict) {
+                post_data[key] = validateDict[key];
+            }
+        } else {
+            var code = $("input[name='code']").val();
+            if(code==''){
+                HB.util.alert("请输入验证码!");
+                return;
+            }
+            post_data = {username: username, password: password, code: code,autoLogin:autoLogin};
+        }
+
+        var dosubmmit = $("#dosubmmit");
+        if(dosubmmit.prop('disabled')) return false;
+
+        $.ajax({
+            url: HB.config.rootPath + 'signup/doLoginBox',
+            data: post_data,
+            beforeSubmit: function() {
+                dosubmmit.prop("disabled", true);
+            },
+            complete: function () {
+                dosubmmit.prop("disabled", false);
+            },
+            success: function (res) {
+                if (res.code == 100000) {
+                    var msg = res.tip ? res.tip : '登录成功！';
+                    HB.util.alert(msg);
+                    //$("#J_LoginBox").attr('style','display:none');
+                    window.location.reload();
+                } else {
+                    HB.util.alert(res.tip,1);
+                    $("#code").trigger('click');
+                    if(window.geetestCaptchaObj) {
+                        window.geetestCaptchaObj.reset();
+                    }
+                }
+            }
+        });
+    }
+</script>
+<div id="J_promptBox" class="J_promptBox" style="display:none">
+    <div class="account-info">
+        <div class="guide-pic">
+            <img src="https://www.ciweimao.com/resources/image/guide.png">
+        </div>
+        <div class="guide-p">
+            <p>漫画功能正在升级改造，<span><a style="color: #fbc02d;" href=https://www.ciweimao.com/index/app>下载客户端</a></span></p>
+            <p>阅读体验更优哦~</p>
+        </div>
+        <div class="form-btn" style="text-align: center">
+            <a class="J_BoxSubmit btn btn-warning " style="width: 280px" href=https://www.ciweimao.com/index/app>下载客户端</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/face.js}"></script>
+<script type="text/javascript" th:src="@{/js/faceImg.js}"></script>
+<script type="text/javascript" th:src="@{/js/book-detail.js}"></script>
+
+<!--<script type="text/javascript">-->
+    <!--//加载右侧页面-->
+    <!--var load_right = function(){-->
+        <!--// 粉丝支持-->
+        <!--var fans = $(".book-fans-support");-->
+        <!--var url = "https://www.ciweimao.com/book/get_book_operate_list?book_id=100130170";-->
+        <!--fans.load(url);-->
+
+        <!--// 本书名人榜-->
+        <!--var fans1 = $(".book-leaderboard");-->
+        <!--var url1 = "https://www.ciweimao.com/book/get_book_operate_best_reader?book_id=100130170";-->
+        <!--fans1.load(url1);-->
+
+        <!--// 铁杆粉丝榜-->
+        <!--var fans2 = $(".book-fansboard");-->
+        <!--var url2 = "https://www.ciweimao.com/book/get_book_fans_list?book_id=100130170";-->
+        <!--fans2.load(url2);-->
+    <!--}-->
+
+    <!--$(document).ready(function(){-->
+        <!--load_right();-->
+    <!--});-->
+
+    <!--(function(){-->
+        <!--var obj = $(".J_Face").closest(".J_BookChapterComment").find('.J_CommentInput');-->
+        <!--$(".J_Face").qfcfaceimg({area: obj});-->
+    <!--})();-->
+    <!--//书评前开始检测是否登陆-->
+    <!--$('.J_CommentInput').focus(function () {-->
+        <!--if (HB.userinfo.reader_id==0) {-->
+            <!--$('.J_CommentInput').blur();-->
+            <!--HB.util.loginDialog();-->
+            <!--return false;-->
+        <!--}-->
+    <!--})-->
+<!--</script>-->
+<div class="footer">
+    <div class="ly-wrap">
+        <ul class="ly-fl about-us">
+            <li>
+                <dl>
+                    <dt><a href="#">首页</a></dt>
+                    <dd><a target="_blank" href="#">网站地图</a></dd>
+                    <dd><a target="_blank" href="#" rel="nofollow">关于刺猬猫</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>联系与合作</dt>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/contact-us" rel="nofollow">联系我们</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/join-us" rel="nofollow">加入我们</a></dd>
+                    <!-- <dd><a target="_blank" href="">帮助中心</a></dd> -->
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>移动客户端</dt>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/iphone" rel="nofollow">刺猬猫 iPhone 版</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/android" rel="nofollow">刺猬猫 Android 版</a></dd>
+                    <dd><a target="_blank" href="https://www.ciweimao.com/index/app/ipad" rel="nofollow">刺猬猫 iPad 版</a></dd>
+                </dl>
+            </li>
+            <!--             <li>
+                            <dl>
+                                <dt>安全认证</dt>
+                                <dd><a logo_size="83x30" logo_type="realname" href="http://www.anquan.org" ><script src="http://static.anquan.org/static/outer/js/aq_auth.js"></script></a></dd>
+                            </dl>
+                        </li> -->
+        </ul>
+        <div class="follow-us Reporting ly-fr">
+            <div class="hd">举报中心</div>
+            <div class="bd" id="">
+                <a class="J_footReport" href="javascript:;">我要举报</a>
+            </div>
+        </div>
+        <div class="ly-fr follow-us">
+            <div class="hd">关注我们</div>
+            <div class="bd" id="J_QrCodeWx">
+                小说资源互助群：274536193<br>
+                刺猬猫问题反馈群：436473245<br>
+                刺猬猫官方微信：<i><b></b></i>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        Copyright &copy; 2015 Hangzhou Fantasy Technology NetworkCo.,Ltd.
+    </div>
+    <div class="record">
+        <a target="_blank" style="margin-left: 10px">杭州狂想网络科技有限公司&nbsp&nbsp</a>
+        <img src="https://www.ciweimao.com/resources/images/record.png" style="position: relative;top: 4px;">
+        <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802009271">浙公网安备 33010802009271号</a>
+        <a target="_blank" href="https://beian.miit.gov.cn/" style="margin-left: 10px">浙ICP备14025736号-3</a><a target="_blank" style="margin-left: 10px">浙网文[2018]3439-247</a>
+        <p>请所有作者发布作品时务必遵守国家互联网信息管理办法规定，我们拒绝任何内容违法的小说，一经发现，即作删除！</p>
+        <p>本站所收录作品、社区话题、书库评论及本站所做之广告均属个人行为，与本站立场无关</p>
+    </div>
+</div>
+
+<!-- 用户操作 -->
+<div style="display: none">
+    <!--<script type="text/javascript">-->
+        <!--var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1276028418'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1276028418' type='text/javascript'%3E%3C/script%3E"));-->
+
+        <!--//页脚举报-->
+        <!--$(".J_footReport").click(function() {-->
+            <!--if (HB.userinfo.reader_id) {-->
+                <!--var content = '<ul class="J_InputRadio input-radio">' +-->
+                    <!--'<li>' +-->
+                    <!--'<a href="javascript:;" class="selected">' +-->
+                    <!--'<div class="ly-fl radio">' +-->
+                    <!--'<i class="icon-select"></i>' +-->
+                    <!--'<input type="radio" class="J_NumResult hide" name="inform_type" value="1">' +-->
+                    <!--'</div>' +-->
+                    <!--'<div class="item">' +-->
+                    <!--'<h3 class="tit">发布不正当内容</h3>' +-->
+                    <!--'<p class="tips">当前页存在色情、暴力、恐怖、广告、违法等低俗不正当内容</p>' +-->
+                    <!--'</div>' +-->
+                    <!--'</a>' +-->
+                    <!--'</li>' +-->
+                    <!--'<input class="J_footReport_CommentInput" style="\n' +-->
+                    <!--'    width: 351px;\n' +-->
+                    <!--'    height: 40px;\n' +-->
+                    <!--'    margin-left: 28px;\n' +-->
+                    <!--'    background: #EAEAEA;\n' +-->
+                    <!--'    border-radius: 6px;\n' +-->
+                    <!--'    border: none;\n' +-->
+                    <!--'    padding-left: 16px;\n' +-->
+                    <!--'" placeholder="我来说两句......">' +-->
+                    <!--'</ul>';-->
+
+                <!--var d = dialog({-->
+                    <!--title:'我要举报',-->
+                    <!--fixed: true,-->
+                    <!--skin: "dialog-box dialog-report",-->
+                    <!--content: content,-->
+                    <!--button: [-->
+                        <!--{-->
+                            <!--value: '提交',-->
+                            <!--callback: function () {-->
+                                <!--submit_informant_footreport();-->
+                            <!--},-->
+                            <!--autofocus: true-->
+                        <!--}-->
+                    <!--]-->
+                <!--});-->
+                <!--d.showModal();-->
+            <!--} else {-->
+                <!--HB.util.loginDialog();-->
+            <!--}-->
+        <!--});-->
+
+        <!--function submit_informant_footreport() {-->
+            <!--var csrf_token = HB.util.Cookie.get('login_token');-->
+            <!--var cnt =  $('.J_footReport_CommentInput').val();-->
+            <!--$.ajax({-->
+                <!--url: HB.config.rootPath + 'reader/inform_url',-->
+                <!--data: {-->
+                    <!--content:cnt,-->
+                    <!--csrf_token:csrf_token,-->
+                <!--},-->
+                <!--success: function (res) {-->
+                    <!--if (res.code == 100000) {-->
+                        <!--HB.util.alert(res.tip,1);-->
+                    <!--}-->
+                    <!--else {-->
+                        <!--HB.util.alert(res.tip,1);-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--</script>-->
+    <script th:inline="javascript">
+
+        var sum = [[${debook}]];
+        $(function() {
+
+            /*加入书架*/
+            $("#addshelfs").click(function () {
+
+//                var un = document.getElementById("login-username").value;
+//                var psw = document.getElementById("login-password").value;
+
+                $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: "addshelfs",//注意路径
+                    data: {
+                        "bookId":sum[0].bookId
+                    },        //{,,,}
+//                    dataType:"json",
+                    dataType:"text",
+                    success: function (data) {
+                        if (data=="delu"){
+                            location = "login"
+                        }
+                        if (data=="del"){
+
+                            $("#addshelfs").text("加入书架");
+                        }
+                        if(data=="ok"){
+                        $("#addshelfs").text("已加入书架");
+                        alert("success");
+                        }
+                    },
+                    error: function (err) {
+
+                        alert("err");
+                    }
+
+                });
+
+
+            });
+
+            /*移出书架*/
+            $("#delshelf").click(function () {
+
+//                var un = document.getElementById("login-username").value;
+//                var psw = document.getElementById("login-password").value;
+                alert("ok");
+                $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: "addshelfs",//注意路径
+                    data: {"bookid":sum.bookid
+                    },        //{,,,}
+//                    dataType:"json",
+                    success: function (data) {
+                        alert("success");
+                    },
+                    error: function (err) {
+                        alert("err");
+                    }
+
+                });
+
+
+            });
+        })
+    </script>
+</div>
+</body>
+</html>
